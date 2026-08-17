@@ -1,0 +1,139 @@
+<script lang="ts">
+	import Button from '$lib/components/Button.svelte';
+
+	const values = [
+		{
+			icon: 'favorite',
+			title: 'Bienveillance',
+			description:
+				"Un accueil inconditionnel et sans jugement pour vous permettre d'être pleinement vous-même en toute sécurité."
+		},
+		{
+			icon: 'verified',
+			title: 'Rigueur',
+			description:
+				'Une pratique basée sur des protocoles éprouvés et une formation continue pour un accompagnement de haute qualité.'
+		},
+		{
+			icon: 'nature_people',
+			title: 'Épanouissement',
+			description:
+				'Vous transmettre les outils nécessaires pour que vous deveniez autonome dans votre quête de mieux-être.'
+		}
+	];
+
+	const timeline = [
+		{
+			period: '2020 - Présent',
+			title: "Fondation de L'Essence de Soi",
+			description:
+				'Ouverture de mon cabinet à Bordeaux et interventions régulières en milieu hospitalier pour la gestion de la douleur chronique.'
+		},
+		{
+			period: '2018 - 2020',
+			title: 'Certification Professionnelle (RNCP)',
+			description:
+				"Formation intensive de deux ans à l'École Supérieure de Sophrologie, spécialisation en troubles du sommeil et acouphènes."
+		},
+		{
+			period: '2010 - 2018',
+			title: 'Carrière en Ressources Humaines',
+			description:
+				'Accompagnement du changement et qualité de vie au travail dans de grandes entreprises internationales. Une expérience clé pour comprendre le stress professionnel.'
+		}
+	];
+</script>
+
+<svelte:head>
+	<title>À Propos | L'Essence de Soi - Sophrologue</title>
+	<meta
+		name="description"
+		content="Élise Vallet, sophrologue certifiée FEPS : parcours, philosophie et valeurs d'accompagnement."
+	/>
+</svelte:head>
+
+<section class="py-section-gap-mobile md:py-section-gap-desktop">
+	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
+		<div class="md:col-span-5">
+			<div
+				class="aspect-[4/5] rounded-2xl shadow-sm bg-primary-container/40 flex items-center justify-center"
+				role="img"
+				aria-label="Portrait d'Élise Vallet, sophrologue"
+			>
+				<span class="material-symbols-outlined text-primary text-8xl" aria-hidden="true">spa</span>
+			</div>
+		</div>
+		<div class="md:col-span-7 md:pl-12">
+			<span class="text-primary font-label-md text-label-md uppercase tracking-widest mb-4 block">Mon Histoire</span>
+			<h1 class="font-headline-display text-headline-display text-on-surface mb-6">Je suis Élise Vallet</h1>
+			<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
+				Sophrologue certifiée et passionnée par l'humain, j'aide les personnes à retrouver leur équilibre intérieur
+				et à cultiver leur résilience face aux défis du quotidien. Mon approche mêle rigueur professionnelle et
+				douceur bienveillante.
+			</p>
+			<div class="flex flex-wrap gap-4">
+				<span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Certifiée FEPS</span>
+				<span class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Spécialiste du Sommeil</span>
+				<span class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Gestion du Stress</span>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="bg-surface-container-low py-20">
+	<div class="max-w-3xl mx-auto px-margin-mobile text-center">
+		<blockquote class="font-headline-lg text-headline-lg md:text-4xl text-secondary italic mb-6">
+			"Le bien-être n'est pas l'absence de tempête, mais la capacité à rester calme au centre de celle-ci."
+		</blockquote>
+		<cite class="font-label-md text-label-md text-outline">— Sagesse Intérieure</cite>
+	</div>
+</section>
+
+<section class="py-section-gap-mobile md:py-section-gap-desktop">
+	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+		<h2 class="font-headline-lg text-headline-lg text-primary mb-4 text-center">Ma Philosophie & Mes Valeurs</h2>
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+			{#each values as v (v.title)}
+				<div class="bg-surface-container-low p-10 rounded-2xl">
+					<span class="material-symbols-outlined text-primary text-4xl mb-6" aria-hidden="true">{v.icon}</span>
+					<h3 class="font-headline-md text-headline-md mb-4">{v.title}</h3>
+					<p class="font-body-md text-body-md text-on-surface-variant">{v.description}</p>
+				</div>
+			{/each}
+		</div>
+	</div>
+</section>
+
+<section class="py-section-gap-mobile md:py-section-gap-desktop bg-surface-bright">
+	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter flex flex-col md:flex-row gap-12">
+		<div class="md:w-1/3">
+			<h2 class="font-headline-lg text-headline-lg text-primary">Mon Parcours</h2>
+			<p class="font-body-md text-body-md text-on-surface-variant mt-6">
+				Un cheminement riche d'expériences en entreprise et en cabinet privé, tourné vers la compréhension des
+				mécanismes du stress et de la récupération.
+			</p>
+		</div>
+		<ol class="md:w-2/3 space-y-16">
+			{#each timeline as item (item.title)}
+				<li>
+					<span class="font-label-md text-label-md text-secondary block mb-2">{item.period}</span>
+					<h3 class="font-headline-md text-headline-md mb-3">{item.title}</h3>
+					<p class="font-body-md text-body-md text-on-surface-variant">{item.description}</p>
+				</li>
+			{/each}
+		</ol>
+	</div>
+</section>
+
+<section class="py-section-gap-mobile md:py-section-gap-desktop">
+	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
+		<div class="bg-primary rounded-3xl p-12 md:p-20 text-center">
+			<h2 class="font-headline-display text-headline-display text-on-primary mb-6">Prêt à commencer votre voyage ?</h2>
+			<p class="font-body-lg text-body-lg text-on-primary/80 mb-10 max-w-2xl mx-auto">
+				Chaque séance est un pas de plus vers une vie plus sereine et consciente. Prenons le temps d'échanger sur
+				vos besoins.
+			</p>
+			<Button href="/rendez-vous" variant="secondary">Prendre rendez-vous en ligne</Button>
+		</div>
+	</div>
+</section>
