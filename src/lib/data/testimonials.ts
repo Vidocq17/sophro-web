@@ -12,6 +12,6 @@ export const testimonials = [
 	{
 		quote:
 			"M'a beaucoup aidée pour la préparation de mon concours. J'ai appris à canaliser mon trac et à rester concentrée.",
-		name: 'Julie D.'
+		name: 'Deborah B.'
 	}
 ];

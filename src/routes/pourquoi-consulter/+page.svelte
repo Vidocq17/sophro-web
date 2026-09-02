@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 
 	const pillars = [
 		{
@@ -56,19 +57,19 @@
 	};
 </script>
 
+<Seo
+	title="Pourquoi consulter une sophrologue à Charenton-le-Pont ?"
+	description="Découvrez la sophrologie, ses exercices de respiration et de détente, le déroulement d'une séance à Charenton-le-Pont et les réponses aux questions fréquentes."
+	path="/pourquoi-consulter"
+/>
 <svelte:head>
-	<title>Pourquoi consulter ? | L'Essence de Soi</title>
-	<meta
-		name="description"
-		content="Ce qu'est la sophrologie, pour qui, le déroulement d'une séance et les questions fréquentes."
-	/>
 	{@html `<script type="application/ld+json">${JSON.stringify(faqJsonLd)}</script>`}
 </svelte:head>
 
 <section class="relative py-section-gap-mobile md:py-section-gap-desktop">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
 		<span class="text-primary font-label-md text-label-md uppercase tracking-widest mb-4 block">Comprendre la sophrologie</span>
-		<h1 class="font-headline-display text-headline-display text-on-surface mb-6">Retrouvez votre équilibre intérieur.</h1>
+		<h1 class="font-headline-display text-headline-display text-on-surface mb-6">Pourquoi consulter une sophrologue ?</h1>
 		<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl mb-8">
 			La sophrologie est une méthode psychocorporelle conçue pour harmoniser le corps et l'esprit. Elle s'appuie sur
 			la respiration, la détente musculaire et la visualisation positive.
@@ -101,9 +102,9 @@
 			senior, les exercices sont personnalisés selon vos capacités.
 		</p>
 		<ul class="flex flex-wrap justify-center gap-6">
-			<li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>Gestion du stress et de l'anxiété</li>
-			<li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>Amélioration du sommeil</li>
-			<li class="flex items-center gap-3"><span class="w-2 h-2 rounded-full bg-primary"></span>Préparation aux examens ou compétitions</li>
+			<li><a class="flex items-center gap-3 text-primary hover:underline" href="/accompagnements#stress-anxiete"><span class="w-2 h-2 rounded-full bg-primary"></span>Gestion du stress et de l'anxiété</a></li>
+			<li><a class="flex items-center gap-3 text-primary hover:underline" href="/accompagnements#sommeil-fatigue"><span class="w-2 h-2 rounded-full bg-primary"></span>Amélioration du sommeil</a></li>
+			<li><a class="flex items-center gap-3 text-primary hover:underline" href="/accompagnements#preparation-examens"><span class="w-2 h-2 rounded-full bg-primary"></span>Préparation aux examens ou compétitions</a></li>
 		</ul>
 	</div>
 </section>

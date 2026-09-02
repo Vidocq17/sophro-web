@@ -1,28 +1,27 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 	import { testimonials } from '$lib/data/testimonials';
 	import { accompagnements } from '$lib/data/accompagnements';
 
 	const highlights = accompagnements.slice(0, 4);
 </script>
 
-<svelte:head>
-	<title>L'Essence de Soi | Sophrologue Certifiée</title>
-	<meta
-		name="description"
-		content="Retrouvez votre équilibre grâce à la sophrologie. Accompagnement bienveillant et personnalisé pour harmoniser corps et esprit."
-	/>
-</svelte:head>
+<Seo
+	title="Sophrologue à Charenton-le-Pont (94220) | L'Essence de Soi"
+	description="Fiona Bemont, sophrologue à Charenton-le-Pont, vous accompagne pour le stress, le sommeil et les émotions. Séances en soirée et en visio le week-end."
+/>
 
 <section class="relative min-h-[80vh] flex items-center">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
 		<div class="max-w-2xl">
+			<p class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-4">Fiona Bemont · Charenton-le-Pont</p>
 			<h1 class="font-headline-display text-headline-display text-primary mb-6">
-				Retrouvez votre équilibre grâce à la sophrologie.
+				Sophrologue à Charenton-le-Pont
 			</h1>
 			<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">
-				Un accompagnement bienveillant et personnalisé pour harmoniser votre corps et votre esprit. Apprenez à
-				libérer vos tensions et à révéler votre potentiel sereinement.
+				Je vous accompagne avec bienveillance pour mieux vivre le stress, retrouver un sommeil plus serein et
+				accueillir vos émotions. Les séances ont lieu au 19 rue de la République ou en visioconférence.
 			</p>
 			<div class="flex flex-wrap gap-4">
 				<Button href="/rendez-vous">Prendre rendez-vous</Button>
@@ -42,7 +41,7 @@
 		</div>
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 			{#each highlights as item (item.title)}
-				<div class="bg-surface rounded-3xl p-8 shadow-sm hover:shadow-md transition-shadow">
+				<a href="/accompagnements#{item.slug}" class="block bg-surface rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
 					<div class="w-16 h-16 bg-primary-container rounded-2xl mb-6 flex items-center justify-center">
 						<span class="material-symbols-outlined text-on-primary-container text-3xl" aria-hidden="true"
 							>{item.icon}</span
@@ -50,11 +49,39 @@
 					</div>
 					<h3 class="font-headline-md text-headline-md text-primary mb-3">{item.title}</h3>
 					<p class="text-sm text-on-surface-variant">{item.description}</p>
-				</div>
+					<span class="inline-block mt-5 text-sm font-semibold text-primary">Découvrir cet accompagnement →</span>
+				</a>
 			{/each}
 		</div>
 		<div class="text-center mt-10">
 			<Button href="/accompagnements" variant="secondary">Voir tous les accompagnements</Button>
+		</div>
+	</div>
+</section>
+
+<section class="py-section-gap-mobile md:py-section-gap-desktop">
+	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+		<div>
+			<p class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-4">Un cabinet proche de vous</p>
+			<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Votre sophrologue à Charenton et dans l'est parisien</h2>
+			<p class="text-on-surface-variant leading-relaxed mb-5">
+				Le cabinet accueille les habitants de Charenton-le-Pont et des communes voisines du Val-de-Marne :
+				Saint-Maurice, Maisons-Alfort, Alfortville, Créteil et Joinville-le-Pont. Il est également facilement
+				accessible depuis Vincennes et Saint-Mandé.
+			</p>
+			<p class="text-on-surface-variant leading-relaxed">
+				Les rendez-vous sont proposés en semaine de 18 h à 22 h. Le week-end, les séances ont lieu sur rendez-vous,
+				en visioconférence ou à Charenton-le-Pont.
+			</p>
+		</div>
+		<div class="bg-primary-container/30 rounded-[2.5rem] p-8 md:p-12 text-center">
+			<h3 class="font-headline-md text-headline-md text-primary mb-5">Cabinet L'Essence de Soi</h3>
+			<address class="not-italic space-y-3 text-on-surface-variant">
+				<p>19 rue de la République<br />94220 Charenton-le-Pont</p>
+				<p><a class="text-primary font-semibold hover:underline" href="tel:+33786002486">07 86 00 24 86</a></p>
+				<p><a class="text-primary font-semibold hover:underline" href="mailto:FionaSophro16@gmail.com">FionaSophro16@gmail.com</a></p>
+			</address>
+			<div class="mt-7"><Button href="/contact" variant="secondary">Voir l'accès et les horaires</Button></div>
 		</div>
 	</div>
 </section>

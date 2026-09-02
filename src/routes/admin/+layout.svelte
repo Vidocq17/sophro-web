@@ -4,6 +4,10 @@
 	const isLoginPage = $derived(page.url.pathname === '/admin/login');
 </script>
 
+<svelte:head>
+	<meta name="robots" content="noindex, nofollow" />
+</svelte:head>
+
 <div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter py-10">
 	{#if !isLoginPage}
 		<nav class="flex items-center justify-between mb-10 pb-6 border-b border-outline-variant/30">

@@ -1,7 +1,7 @@
 import type { RequestHandler } from './$types';
 import { SITE_URL } from '$lib/data/site';
 
-const routes = ['/', '/a-propos', '/pourquoi-consulter', '/accompagnements', '/rendez-vous'];
+const routes = ['/', '/a-propos', '/pourquoi-consulter', '/accompagnements', '/contact', '/rendez-vous'];
 
 export const prerender = true;
 

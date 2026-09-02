@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import Seo from '$lib/components/Seo.svelte';
 	import type { PageData, ActionData } from './$types';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
@@ -41,18 +42,16 @@
 	}
 </script>
 
-<svelte:head>
-	<title>L'Essence de Soi - Prendre rendez-vous</title>
-	<meta
-		name="description"
-		content="Réservez votre séance de sophrologie en ligne, en choisissant le créneau qui vous convient."
-	/>
-</svelte:head>
+<Seo
+	title="Prendre rendez-vous avec une sophrologue à Charenton"
+	description="Réservez votre séance avec Fiona Bemont, sophrologue à Charenton-le-Pont : rendez-vous en soirée la semaine, à Charenton ou en visio le week-end."
+	path="/rendez-vous"
+/>
 
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mb-16 text-center">
 	<h1 class="font-headline-display text-headline-display text-primary mb-4">Réservez votre instant de sérénité</h1>
 	<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-		Choisissez le moment qui vous convient le mieux pour commencer votre voyage vers le bien-être intérieur.
+		Choisissez votre créneau pour une séance à Charenton-le-Pont ou en visioconférence selon les disponibilités.
 	</p>
 </section>
 

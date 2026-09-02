@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /api
 
-Sitemap: https://www.lessencedesoi.fr/sitemap.xml
+Sitemap: https://lessence-de-soi.fr/sitemap.xml

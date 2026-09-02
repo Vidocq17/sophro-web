@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 
 	const values = [
 		{
@@ -24,33 +25,19 @@
 
 	const timeline = [
 		{
-			period: '2020 - Présent',
-			title: "Fondation de L'Essence de Soi",
+			period: '2025 - présent',
+			title: 'Formation et début de mon activité professionnelle',
 			description:
-				'Ouverture de mon cabinet à Bordeaux et interventions régulières en milieu hospitalier pour la gestion de la douleur chronique.'
+				'Accompagnement de particuliers et animation de séances collectives autour de la gestion de la douleur chronique et des émotions fortes.'
 		},
-		{
-			period: '2018 - 2020',
-			title: 'Certification Professionnelle (RNCP)',
-			description:
-				"Formation intensive de deux ans à l'École Supérieure de Sophrologie, spécialisation en troubles du sommeil et acouphènes."
-		},
-		{
-			period: '2010 - 2018',
-			title: 'Carrière en Ressources Humaines',
-			description:
-				'Accompagnement du changement et qualité de vie au travail dans de grandes entreprises internationales. Une expérience clé pour comprendre le stress professionnel.'
-		}
 	];
 </script>
 
-<svelte:head>
-	<title>À Propos | L'Essence de Soi - Sophrologue</title>
-	<meta
-		name="description"
-		content="Élise Vallet, sophrologue certifiée FEPS : parcours, philosophie et valeurs d'accompagnement."
-	/>
-</svelte:head>
+<Seo
+	title="Fiona Bemont, sophrologue à Charenton-le-Pont"
+	description="Découvrez Fiona Bemont, sophrologue à Charenton-le-Pont, son approche bienveillante et sa pratique auprès des particuliers et des groupes."
+	path="/a-propos"
+/>
 
 <section class="py-section-gap-mobile md:py-section-gap-desktop">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
@@ -58,21 +45,21 @@
 			<div
 				class="aspect-[4/5] rounded-2xl shadow-sm bg-primary-container/40 flex items-center justify-center"
 				role="img"
-				aria-label="Portrait d'Élise Vallet, sophrologue"
+				aria-label="Portrait de Fiona Bemont, sophrologue"
 			>
 				<span class="material-symbols-outlined text-primary text-8xl" aria-hidden="true">spa</span>
 			</div>
 		</div>
 		<div class="md:col-span-7 md:pl-12">
 			<span class="text-primary font-label-md text-label-md uppercase tracking-widest mb-4 block">Mon Histoire</span>
-			<h1 class="font-headline-display text-headline-display text-on-surface mb-6">Je suis Élise Vallet</h1>
+			<h1 class="font-headline-display text-headline-display text-on-surface mb-6">Je suis Fiona Bemont</h1>
 			<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
-				Sophrologue certifiée et passionnée par l'humain, j'aide les personnes à retrouver leur équilibre intérieur
+				Sophrologue et passionnée par l'humain, j'aide les personnes à retrouver leur équilibre intérieur
 				et à cultiver leur résilience face aux défis du quotidien. Mon approche mêle rigueur professionnelle et
 				douceur bienveillante.
 			</p>
 			<div class="flex flex-wrap gap-4">
-				<span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Certifiée FEPS</span>
+				<span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Accompagnement personnalisé</span>
 				<span class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Spécialiste du Sommeil</span>
 				<span class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Gestion du Stress</span>
 			</div>

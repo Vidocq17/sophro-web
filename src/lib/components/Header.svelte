@@ -3,7 +3,8 @@
 		{ href: '/', label: 'Accueil' },
 		{ href: '/pourquoi-consulter', label: 'Pourquoi consulter ?' },
 		{ href: '/accompagnements', label: 'Accompagnements' },
-		{ href: '/a-propos', label: 'À propos' }
+		{ href: '/a-propos', label: 'À propos' },
+		{ href: '/contact', label: 'Contact' }
 	];
 	let { currentPath = '' }: { currentPath?: string } = $props();
 </script>
@@ -15,7 +16,7 @@
 	>
 		<a href="/" class="flex items-center gap-3">
 			<span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">spa</span>
-			<span class="font-headline-md text-headline-md font-medium text-primary">L'Essence de Soi</span>
+			<span class="hidden sm:inline font-headline-md text-headline-md font-medium text-primary">L'Essence de Soi</span>
 		</a>
 		<div class="hidden md:flex items-center gap-8">
 			{#each links as link (link.href)}
@@ -30,11 +31,25 @@
 				</a>
 			{/each}
 		</div>
+		<div class="flex items-center gap-2">
 		<a
 			href="/rendez-vous"
-			class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-on-primary-container transition-all active:scale-95"
+			class="bg-primary text-on-primary px-4 sm:px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-on-primary-container transition-all active:scale-95"
 		>
-			Prendre rendez-vous
+			<span class="hidden sm:inline">Prendre rendez-vous</span><span class="sm:hidden">Rendez-vous</span>
 		</a>
+		<details class="relative md:hidden">
+			<summary class="list-none cursor-pointer p-2 rounded-full text-primary hover:bg-primary-container/30" aria-label="Ouvrir le menu">
+				<span class="material-symbols-outlined block" aria-hidden="true">menu</span>
+			</summary>
+			<div class="absolute right-0 top-12 w-64 bg-surface rounded-2xl shadow-lg border border-outline-variant/30 p-3">
+				{#each links as link (link.href)}
+					<a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined} class="block px-4 py-3 rounded-xl text-on-surface-variant hover:bg-primary-container/30 hover:text-primary">
+						{link.label}
+					</a>
+				{/each}
+			</div>
+		</details>
+		</div>
 	</nav>
 </header>
