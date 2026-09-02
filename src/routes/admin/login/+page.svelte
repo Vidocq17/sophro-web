@@ -12,11 +12,11 @@
 	<form method="POST" class="space-y-6">
 		<div>
 			<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="email">Email</label>
-			<input id="email" name="email" type="email" required class="w-full bg-surface-container-low rounded-lg p-3" />
+			<input id="email" name="email" type="email" value={form?.email ?? ''} autocomplete="username" required class="w-full bg-surface-container-low rounded-lg p-3" />
 		</div>
 		<div>
 			<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="password">Mot de passe</label>
-			<input id="password" name="password" type="password" required class="w-full bg-surface-container-low rounded-lg p-3" />
+			<input id="password" name="password" type="password" autocomplete="current-password" required class="w-full bg-surface-container-low rounded-lg p-3" />
 		</div>
 		{#if form?.error}
 			<p role="alert" class="text-error text-sm">{form.error}</p>

@@ -9,7 +9,12 @@
 
 <h1 class="font-headline-lg text-headline-lg text-primary mb-8">Prochains rendez-vous</h1>
 
-{#if data.bookings.length === 0}
+{#if data.loadError}
+	<div role="alert" class="bg-secondary-container text-on-secondary-container rounded-xl p-5">
+		Impossible de charger les rendez-vous. Vérifiez la connexion au service puis
+		<a class="font-semibold underline" href="/admin">réessayez</a>.
+	</div>
+{:else if data.bookings.length === 0}
 	<p class="text-on-surface-variant">Aucun rendez-vous pour le moment.</p>
 {:else}
 	<div class="overflow-x-auto">

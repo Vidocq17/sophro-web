@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
 	import Seo from '$lib/components/Seo.svelte';
+	import { site } from '$lib/data/site';
 	import type { PageData, ActionData } from './$types';
 
 	let { data, form }: { data: PageData; form: ActionData } = $props();
@@ -12,6 +13,18 @@
 
 	let selectedType = $state<'individuelle' | 'collective'>('individuelle');
 	let selectedSlotId = $state<string | null>(null);
+	let submitting = $state(false);
+
+	function enhanceBooking() {
+		submitting = true;
+		return async ({ update }: { update: () => Promise<void> }) => {
+			try {
+				await update();
+			} finally {
+				submitting = false;
+			}
+		};
+	}
 
 	const slotsByDate = $derived(
 		data.slots
@@ -55,6 +68,21 @@
 	</p>
 </section>
 
+{#if data.slotsUnavailable}
+	<section class="max-w-2xl mx-auto px-margin-mobile md:px-gutter">
+		<div role="alert" class="bg-secondary-container/70 border border-secondary/15 rounded-[2rem] p-8 md:p-10 text-center">
+			<span class="material-symbols-outlined text-primary text-4xl mb-4" aria-hidden="true">sms</span>
+			<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Créneaux momentanément indisponibles</h2>
+			<p class="text-on-surface-variant mb-7">
+				Envoyez un message au <a class="font-semibold text-primary hover:underline" href="sms:+33786002486">{site.phoneDisplay}</a>
+				pour prendre rendez-vous.
+			</p>
+			<a class="inline-flex items-center justify-center px-8 py-4 rounded-full bg-primary text-on-primary font-semibold" href="sms:+33786002486">
+				Envoyer un SMS
+			</a>
+		</div>
+	</section>
+{:else}
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
 	<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
 		<div class="lg:col-span-5 space-y-6">
@@ -149,10 +177,20 @@
 
 		{#if form?.success}
 			<p role="status" class="p-4 rounded-lg bg-primary-container text-on-primary-container">
-				Merci ! Votre demande de rendez-vous est confirmée, un email vous a été envoyé.
+				{#if form.emailSent}
+					Merci ! Votre rendez-vous est confirmé et un email vous a été envoyé.
+				{:else}
+					Votre rendez-vous est bien confirmé. L'email n'a pas pu être envoyé, pensez à noter le créneau choisi.
+				{/if}
 			</p>
 		{:else}
-			<form method="POST" action="?/book" use:enhance>
+			<form method="POST" action="?/book" use:enhance={enhanceBooking} aria-busy={submitting}>
+				{#if form?.bookingUnavailable}
+					<div role="alert" class="p-4 rounded-lg bg-secondary-container text-on-secondary-container mb-6">
+						La réservation en ligne est momentanément indisponible. Envoyez un message au
+						<a class="font-semibold underline" href="sms:+33786002486">{site.phoneDisplay}</a>.
+					</div>
+				{/if}
 				<input type="hidden" name="slotId" value={selectedSlotId ?? ''} />
 				{#if form?.errors?.slotId}
 					<p role="alert" class="text-error text-sm mb-4">{form.errors.slotId}</p>
@@ -161,37 +199,38 @@
 				<div class="grid grid-cols-2 gap-4 mb-6">
 					<div>
 						<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="firstName">Prénom</label>
-						<input id="firstName" name="firstName" class="w-full bg-surface border-none rounded-lg p-3 focus:ring-2 focus:ring-primary/20" type="text" required />
+						<input id="firstName" name="firstName" value={form?.values?.firstName ?? ''} class="w-full bg-surface border-none rounded-lg p-3 focus:ring-2 focus:ring-primary/20" type="text" autocomplete="given-name" required />
 						{#if form?.errors?.firstName}<p role="alert" class="text-error text-sm mt-1">{form.errors.firstName}</p>{/if}
 					</div>
 					<div>
 						<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="lastName">Nom</label>
-						<input id="lastName" name="lastName" class="w-full bg-surface border-none rounded-lg p-3 focus:ring-2 focus:ring-primary/20" type="text" required />
+						<input id="lastName" name="lastName" value={form?.values?.lastName ?? ''} class="w-full bg-surface border-none rounded-lg p-3 focus:ring-2 focus:ring-primary/20" type="text" autocomplete="family-name" required />
 						{#if form?.errors?.lastName}<p role="alert" class="text-error text-sm mt-1">{form.errors.lastName}</p>{/if}
 					</div>
 				</div>
 
 				<div class="mb-6">
 					<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="email">Email</label>
-					<input id="email" name="email" class="w-full bg-surface border-none rounded-lg p-3 focus:ring-2 focus:ring-primary/20" type="email" required />
+					<input id="email" name="email" value={form?.values?.email ?? ''} class="w-full bg-surface border-none rounded-lg p-3 focus:ring-2 focus:ring-primary/20" type="email" autocomplete="email" required />
 					{#if form?.errors?.email}<p role="alert" class="text-error text-sm mt-1">{form.errors.email}</p>{/if}
 				</div>
 
 				<div class="mb-6">
 					<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="phone">Téléphone</label>
-					<input id="phone" name="phone" class="w-full bg-surface border-none rounded-lg p-3 focus:ring-2 focus:ring-primary/20" type="tel" required />
+					<input id="phone" name="phone" value={form?.values?.phone ?? ''} class="w-full bg-surface border-none rounded-lg p-3 focus:ring-2 focus:ring-primary/20" type="tel" autocomplete="tel" required />
 					{#if form?.errors?.phone}<p role="alert" class="text-error text-sm mt-1">{form.errors.phone}</p>{/if}
 				</div>
 
 				<div class="mb-6">
 					<label class="text-xs font-bold text-on-surface-variant uppercase tracking-wider" for="message">Message ou besoins spécifiques (Optionnel)</label>
-					<textarea id="message" name="message" class="w-full bg-surface border-none rounded-lg p-3 focus:ring-2 focus:ring-primary/20" rows="3"></textarea>
+					<textarea id="message" name="message" class="w-full bg-surface border-none rounded-lg p-3 focus:ring-2 focus:ring-primary/20" rows="3">{form?.values?.message ?? ''}</textarea>
 				</div>
 
-				<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-headline-md text-headline-md hover:bg-primary/90 transition-all active:scale-[0.98]" type="submit">
-					Confirmer le rendez-vous
+				<button class="w-full bg-primary text-on-primary py-4 rounded-xl font-headline-md text-headline-md hover:bg-primary/90 transition-all active:scale-[0.98] disabled:opacity-60 disabled:cursor-wait" type="submit" disabled={submitting}>
+					{submitting ? 'Confirmation en cours…' : 'Confirmer le rendez-vous'}
 				</button>
 			</form>
 		{/if}
 	</div>
 </section>
+{/if}

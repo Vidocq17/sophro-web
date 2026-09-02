@@ -11,6 +11,11 @@ export const GET: RequestHandler = async ({ url }) => {
 		return json({ error: 'Paramètre "month" invalide, format attendu YYYY-MM.' }, { status: 400 });
 	}
 
-	const slots = await getAvailableSlots(month);
-	return json({ slots });
+	try {
+		const slots = await getAvailableSlots(month);
+		return json({ slots });
+	} catch (error) {
+		console.error('Impossible de charger les créneaux via l’API', error);
+		return json({ error: 'Service momentanément indisponible.' }, { status: 503 });
+	}
 };

@@ -1,5 +1,17 @@
 import { describe, it, expect } from 'vitest';
-import { requireAdminSession } from '$lib/server/auth-guard';
+import { isAdminPath, requireAdminSession } from '$lib/server/auth-guard';
+
+describe('isAdminPath', () => {
+	it('does not require an authentication request for public pages', () => {
+		expect(isAdminPath('/')).toBe(false);
+		expect(isAdminPath('/rendez-vous')).toBe(false);
+	});
+
+	it('identifies all admin pages', () => {
+		expect(isAdminPath('/admin')).toBe(true);
+		expect(isAdminPath('/admin/disponibilites')).toBe(true);
+	});
+});
 
 describe('requireAdminSession', () => {
 	it('allows access to /admin/login without a session', () => {

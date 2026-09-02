@@ -10,6 +10,12 @@
 
 <h1 class="font-headline-lg text-headline-lg text-primary mb-8">Gérer les disponibilités</h1>
 
+{#if data.loadError}
+	<div role="alert" class="bg-secondary-container text-on-secondary-container rounded-xl p-5 mb-8">
+		Impossible de charger les disponibilités. <a class="font-semibold underline" href="/admin/disponibilites">Réessayer</a>.
+	</div>
+{/if}
+
 <form method="POST" action="?/create" use:enhance class="grid grid-cols-2 md:grid-cols-6 gap-4 mb-12 items-end">
 	<div>
 		<label class="text-xs font-bold uppercase" for="date">Date</label>

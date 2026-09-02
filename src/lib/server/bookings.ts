@@ -42,6 +42,17 @@ export async function getAvailableSlots(month: string): Promise<Slot[]> {
 	return (data ?? []).filter((slot) => slot.booked_count < slot.capacity);
 }
 
+export async function getSlotDetails(id: string): Promise<{ date: string; start_time: string } | null> {
+	const { data, error } = await getSupabaseAdmin()
+		.from('availability_slots')
+		.select('date, start_time')
+		.eq('id', id)
+		.single();
+
+	if (error) throw error;
+	return data;
+}
+
 export async function createBooking(input: BookingInput): Promise<CreateBookingResult> {
 	const { data, error } = await getSupabaseAdmin().rpc('book_slot', {
 		p_slot_id: input.slotId,

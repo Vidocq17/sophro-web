@@ -1,49 +1,53 @@
 import type { Actions, PageServerLoad } from './$types';
 import { fail } from '@sveltejs/kit';
-import { getAvailableSlots, createBooking } from '$lib/server/bookings';
+import { getAvailableSlots, createBooking, getSlotDetails } from '$lib/server/bookings';
 import { validateBookingInput } from '$lib/server/validation';
 import { sendBookingConfirmation } from '$lib/server/email';
-import { getSupabaseAdmin } from '$lib/server/supabase';
+import { loadBookingPage } from '$lib/server/booking-page';
+import { processBooking } from '$lib/server/booking-submission';
 
 export const load: PageServerLoad = async ({ url }) => {
-	const month = url.searchParams.get('mois') ?? new Date().toISOString().slice(0, 7);
-	const slots = await getAvailableSlots(month);
-	return { slots, month };
+	return loadBookingPage(url, getAvailableSlots, console.error);
 };
 
 export const actions: Actions = {
 	book: async ({ request }) => {
 		const formData = await request.formData();
-		const result = validateBookingInput(Object.fromEntries(formData));
+		const raw = Object.fromEntries(formData);
+		const result = validateBookingInput(raw);
+		const values = {
+			firstName: String(raw.firstName ?? ''),
+			lastName: String(raw.lastName ?? ''),
+			email: String(raw.email ?? ''),
+			phone: String(raw.phone ?? ''),
+			message: String(raw.message ?? '')
+		};
 
 		if (!result.ok) {
-			return fail(400, { errors: result.errors });
+			return fail(400, { errors: result.errors, values });
 		}
 
-		const { data: slot } = await getSupabaseAdmin()
-			.from('availability_slots')
-			.select('date, start_time')
-			.eq('id', result.value.slotId)
-			.single();
+		const outcome = await processBooking(result.value, {
+			findSlot: getSlotDetails,
+			create: createBooking,
+			sendConfirmation: sendBookingConfirmation,
+			reportError: console.error
+		});
 
-		const outcome = await createBooking(result.value);
-
-		if (!outcome.ok) {
+		if (outcome.status === 'slot-full') {
 			const errors: Record<string, string> = {
 				slotId: "Ce créneau vient d'être réservé, merci d'en choisir un autre."
 			};
 			return fail(409, { errors });
 		}
 
-		if (slot) {
-			await sendBookingConfirmation({
-				email: result.value.email,
-				firstName: result.value.firstName,
-				date: slot.date,
-				startTime: slot.start_time
+		if (outcome.status === 'unavailable') {
+			return fail(503, {
+				bookingUnavailable: true,
+				values
 			});
 		}
 
-		return { success: true };
+		return { success: true, emailSent: outcome.emailSent };
 	}
 };
