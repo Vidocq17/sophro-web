@@ -28,14 +28,14 @@
 			period: '2025 - présent',
 			title: 'Formation et début de mon activité professionnelle',
 			description:
-				'Accompagnement de particuliers et animation de séances collectives autour de la gestion de la douleur chronique et des émotions fortes.'
+				'Accompagnement de particuliers et animation de séances collectives autour de la gestion des émotions.'
 		},
 	];
 </script>
 
 <Seo
-	title="Fiona Bemont, sophrologue à Charenton-le-Pont"
-	description="Découvrez Fiona Bemont, sophrologue à Charenton-le-Pont, son approche bienveillante et sa pratique auprès des particuliers et des groupes."
+	title="Fiona Benguigui, sophrologue à Charenton-le-Pont"
+	description="Découvrez Fiona Benguigui, sophrologue à Charenton-le-Pont, son approche bienveillante et sa pratique auprès des particuliers et des groupes."
 	path="/a-propos"
 />
 
@@ -45,14 +45,14 @@
 			<div
 				class="aspect-[4/5] rounded-2xl shadow-sm bg-primary-container/40 flex items-center justify-center"
 				role="img"
-				aria-label="Portrait de Fiona Bemont, sophrologue"
+				aria-label="Portrait de Fiona Benguigui, sophrologue"
 			>
 				<span class="material-symbols-outlined text-primary text-8xl" aria-hidden="true">spa</span>
 			</div>
 		</div>
 		<div class="md:col-span-7 md:pl-12">
 			<span class="text-primary font-label-md text-label-md uppercase tracking-widest mb-4 block">Mon Histoire</span>
-			<h1 class="font-headline-display text-headline-display text-on-surface mb-6">Je suis Fiona Bemont</h1>
+			<h1 class="font-headline-display text-headline-display text-on-surface mb-6">Je suis Fiona Benguigui</h1>
 			<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
 				Sophrologue et passionnée par l'humain, j'aide les personnes à retrouver leur équilibre intérieur
 				et à cultiver leur résilience face aux défis du quotidien. Mon approche mêle rigueur professionnelle et
@@ -60,8 +60,11 @@
 			</p>
 			<div class="flex flex-wrap gap-4">
 				<span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Accompagnement personnalisé</span>
-				<span class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Spécialiste du Sommeil</span>
+				<span class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Amélioration du quotidien</span>
 				<span class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Gestion du Stress</span>
+				<span class="bg-surface-container-low text-on-surface-container-low px-4 py-2 rounded-full font-label-md text-label-md italic">Épanouissement Personnel</span>
+				<span class="bg-surface-container-high text-on-surface-container-high px-4 py-2 rounded-full font-label-md text-label-md italic">Gestion des émotions</span>
+				<span class="bg-surface-container-medium text-on-surface-container-medium px-4 py-2 rounded-full font-label-md text-label-md italic">Estime de soi</span>
 			</div>
 		</div>
 	</div>
@@ -95,10 +98,6 @@
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter flex flex-col md:flex-row gap-12">
 		<div class="md:w-1/3">
 			<h2 class="font-headline-lg text-headline-lg text-primary">Mon Parcours</h2>
-			<p class="font-body-md text-body-md text-on-surface-variant mt-6">
-				Un cheminement riche d'expériences en entreprise et en cabinet privé, tourné vers la compréhension des
-				mécanismes du stress et de la récupération.
-			</p>
 		</div>
 		<ol class="md:w-2/3 space-y-16">
 			{#each timeline as item (item.title)}

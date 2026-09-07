@@ -8,7 +8,7 @@ describe('loadBookingPage', () => {
 		const reportError = vi.fn();
 
 		const result = await loadBookingPage(
-			new URL('https://lessence-de-soi.fr/rendez-vous?mois=2026-09'),
+			new URL('https://labullecalme.fr/rendez-vous?mois=2026-09'),
 			fetchSlots,
 			reportError
 		);
@@ -23,7 +23,7 @@ describe('loadBookingPage', () => {
 		const reportError = vi.fn();
 
 		const result = await loadBookingPage(
-			new URL('https://lessence-de-soi.fr/rendez-vous?mois=2026-09'),
+			new URL('https://labullecalme.fr/rendez-vous?mois=2026-09'),
 			fetchSlots,
 			reportError
 		);

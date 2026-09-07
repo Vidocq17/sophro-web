@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Connexion admin | L'Essence de Soi</title>
+	<title>Connexion admin | La Bulle Calme</title>
 </svelte:head>
 
 <section class="max-w-md mx-auto py-section-gap-mobile px-margin-mobile">

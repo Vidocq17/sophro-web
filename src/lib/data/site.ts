@@ -1,18 +1,16 @@
-export const SITE_URL = 'https://lessence-de-soi.fr';
+export const SITE_URL = 'https://labullecalme.fr';
 
 export const site = {
-	name: "L'Essence de Soi",
-	practitioner: 'Fiona Bemont',
+	name: "La Bulle Calme",
+	practitioner: 'Fiona Benguigui',
 	url: SITE_URL,
 	phoneDisplay: '07 86 00 24 86',
 	phoneInternational: '+33786002486',
 	phoneHref: 'tel:+33786002486',
-	email: 'FionaSophro16@gmail.com',
-	emailHref: 'mailto:FionaSophro16@gmail.com',
-	streetAddress: '19 rue de la République',
+	email: 'fiona@labullecalme.com',
+	emailHref: 'mailto:fiona@labullecalme.com',
 	postalCode: '94220',
 	city: 'Charenton-le-Pont',
-	addressDisplay: '19 rue de la République, 94220 Charenton-le-Pont',
 	mapsUrl:
 		'https://www.google.com/maps/search/?api=1&query=19%20rue%20de%20la%20R%C3%A9publique%2C%2094220%20Charenton-le-Pont',
 	weekdayHours: 'Du lundi au vendredi, de 18 h à 22 h',
@@ -31,14 +29,6 @@ export function buildLocalBusinessJsonLd() {
 		url: SITE_URL,
 		telephone: site.phoneInternational,
 		email: site.email,
-		address: {
-			'@type': 'PostalAddress',
-			streetAddress: site.streetAddress,
-			postalCode: site.postalCode,
-			addressLocality: site.city,
-			addressRegion: 'Île-de-France',
-			addressCountry: 'FR'
-		},
 		areaServed: [site.city, ...site.nearbyCities],
 		openingHoursSpecification: [
 			{

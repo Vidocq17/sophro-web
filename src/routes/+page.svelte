@@ -3,25 +3,26 @@
 	import Seo from '$lib/components/Seo.svelte';
 	import { testimonials } from '$lib/data/testimonials';
 	import { accompagnements } from '$lib/data/accompagnements';
+	import { site } from '$lib/data/site';
 
 	const highlights = accompagnements.slice(0, 4);
 </script>
 
 <Seo
-	title="Sophrologue à Charenton-le-Pont (94220) | L'Essence de Soi"
-	description="Fiona Bemont, sophrologue à Charenton-le-Pont, vous accompagne pour le stress, le sommeil et les émotions. Séances en soirée et en visio le week-end."
+	title="Sophrologue à Charenton-le-Pont (94220) | La Bulle Calme"
+	description="Fiona Benguigui, sophrologue à Charenton-le-Pont, vous accompagne pour le stress, le sommeil et les émotions. Séances en soirée et en visio le week-end."
 />
 
 <section class="relative min-h-[80vh] flex items-center">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
 		<div class="max-w-2xl">
-			<p class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-4">Fiona Bemont · Charenton-le-Pont</p>
+			<p class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-4">Fiona Benguigui · Charenton-le-Pont</p>
 			<h1 class="font-headline-display text-headline-display text-primary mb-6">
 				Sophrologue à Charenton-le-Pont
 			</h1>
 			<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">
-				Je vous accompagne avec bienveillance pour mieux vivre le stress, retrouver un sommeil plus serein et
-				accueillir vos émotions. Les séances ont lieu au 19 rue de la République ou en visioconférence.
+				Je vous accompagne avec bienveillance pour mieux gérer votre stress, retrouver un sommeil plus serein et
+				accueillir vos émotions. Les séances ont lieu chez vous ou en visioconférence.
 			</p>
 			<div class="flex flex-wrap gap-4">
 				<Button href="/rendez-vous">Prendre rendez-vous</Button>
@@ -75,11 +76,10 @@
 			</p>
 		</div>
 		<div class="bg-primary-container/30 rounded-[2.5rem] p-8 md:p-12 text-center">
-			<h3 class="font-headline-md text-headline-md text-primary mb-5">Cabinet L'Essence de Soi</h3>
+			<h3 class="font-headline-md text-headline-md text-primary mb-5">Cabinet La Bulle Calme</h3>
 			<address class="not-italic space-y-3 text-on-surface-variant">
-				<p>19 rue de la République<br />94220 Charenton-le-Pont</p>
-				<p><a class="text-primary font-semibold hover:underline" href="tel:+33786002486">07 86 00 24 86</a></p>
-				<p><a class="text-primary font-semibold hover:underline" href="mailto:FionaSophro16@gmail.com">FionaSophro16@gmail.com</a></p>
+				<p><a class="text-primary font-semibold hover:underline" href={site.phoneHref}>{site.phoneDisplay}</a></p>
+				<p><a class="text-primary font-semibold hover:underline" href={site.emailHref}>{site.email}</a></p>
 			</address>
 			<div class="mt-7"><Button href="/contact" variant="secondary">Voir l'accès et les horaires</Button></div>
 		</div>

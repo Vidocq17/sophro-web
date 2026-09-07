@@ -4,14 +4,14 @@ export const accompagnements = [
 		icon: 'waves',
 		title: 'Stress & Anxiété',
 		description:
-			'Apprenez à réguler votre système nerveux, à relâcher les tensions musculaires et à apaiser le flux de vos pensées pour retrouver un calme durable.'
+			'Apprenez à réguler votre système nerveux, à relâcher les tensions musculaires et à canaliser vos pensées pour retrouver un calme durable.'
 	},
 	{
 		slug: 'sommeil-fatigue',
 		icon: 'bedtime',
 		title: 'Sommeil & Fatigue',
 		description:
-			"Retrouvez des nuits réparatrices en travaillant sur l'endormissement et la qualité du sommeil profond. Luttez contre l'épuisement chronique."
+			"Retrouvez des nuits réparatrices en travaillant sur l'endormissement. Luttez contre l'épuisement chronique."
 	},
 	{
 		slug: 'emotions',
@@ -35,25 +35,11 @@ export const accompagnements = [
 			"Retrouvez foi en vos capacités. Un travail sur l'image de soi et la valorisation de ses ressources internes."
 	},
 	{
-		slug: 'maternite',
-		icon: 'child_care',
-		title: 'Maternité',
-		description:
-			"Vivre sa grossesse sereinement, se préparer à l'accouchement et accueillir son enfant dans la douceur et la conscience."
-	},
-	{
 		slug: 'preparation-examens',
 		icon: 'psychology',
 		title: 'Mental Prep & Examens',
 		description:
 			'Bac, permis, compétitions sportives ou prise de parole en public. Optimisez vos capacités cognitives et gérez votre trac.'
-	},
-	{
-		slug: 'douleurs-acouphenes',
-		icon: 'hearing_disabled',
-		title: 'Douleurs & Acouphènes',
-		description:
-			'Mieux gérer la douleur chronique et la perception des bruits parasites. Retrouvez un confort de vie au quotidien.'
 	},
 	{
 		slug: 'enfants-adolescents',

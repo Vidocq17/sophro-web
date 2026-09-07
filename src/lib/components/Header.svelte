@@ -16,7 +16,7 @@
 	>
 		<a href="/" class="flex items-center gap-3">
 			<span class="material-symbols-outlined text-primary text-3xl" aria-hidden="true">spa</span>
-			<span class="hidden sm:inline font-headline-md text-headline-md font-medium text-primary">L'Essence de Soi</span>
+			<span class="hidden sm:inline font-headline-md text-headline-md font-medium text-primary">La Bulle Calme</span>
 		</a>
 		<div class="hidden md:flex items-center gap-8">
 			{#each links as link (link.href)}

@@ -8,24 +8,17 @@ describe('local business SEO data', () => {
 		expect(jsonLd).toMatchObject({
 			'@context': 'https://schema.org',
 			'@type': 'LocalBusiness',
-			name: "L'Essence de Soi",
-			url: 'https://lessence-de-soi.fr',
+			name: "La Bulle Calme",
+			url: 'https://labullecalme.fr',
 			telephone: '+33786002486',
-			email: 'FionaSophro16@gmail.com',
-			address: {
-				'@type': 'PostalAddress',
-				streetAddress: '19 rue de la République',
-				postalCode: '94220',
-				addressLocality: 'Charenton-le-Pont',
-				addressCountry: 'FR'
-			}
+			email: 'fiona@labullecalme.com',
 		});
 		expect(jsonLd.openingHoursSpecification).toHaveLength(1);
 	});
 
 	test('exposes crawlable contact links', () => {
 		expect(site.phoneHref).toBe('tel:+33786002486');
-		expect(site.emailHref).toBe('mailto:FionaSophro16@gmail.com');
+		expect(site.emailHref).toBe('mailto:fiona@labullecalme.com');
 		expect(site.mapsUrl).toContain('19%20rue%20de%20la%20R%C3%A9publique');
 	});
 });

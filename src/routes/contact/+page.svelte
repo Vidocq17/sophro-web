@@ -6,7 +6,7 @@
 
 <Seo
 	title="Contact et accès | Sophrologue à Charenton-le-Pont"
-	description="Contactez Fiona Bemont, sophrologue au 19 rue de la République à Charenton-le-Pont. Rendez-vous en semaine de 18 h à 22 h et le week-end sur rendez-vous."
+	description="Contactez Fiona Benguigui, sophrologue à Charenton-le-Pont. Rendez-vous en semaine de 18 h à 22 h et le week-end sur rendez-vous."
 	path="/contact"
 />
 
@@ -15,7 +15,7 @@
 	<h1 class="font-headline-display text-headline-display text-primary mb-6">Votre sophrologue à Charenton-le-Pont</h1>
 	<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
 		Retrouvez un espace d'écoute et de pratique à Charenton-le-Pont, avec des horaires adaptés aux personnes
-		disponibles en soirée. Des séances en visioconférence sont également proposées le week-end.
+		disponibles en soirée. Des séances chez vous ou en visioconférence sont également proposées le week-end.
 	</p>
 </section>
 
@@ -26,14 +26,11 @@
 			<address class="not-italic space-y-5 text-on-surface-variant">
 				<div>
 					<p class="font-semibold text-on-surface">{site.practitioner} · {site.name}</p>
-					<p>{site.streetAddress}<br />{site.postalCode} {site.city}</p>
+					<p><br />{site.postalCode} {site.city}</p>
 				</div>
 				<p><a class="text-primary font-semibold hover:underline" href={site.phoneHref}>{site.phoneDisplay}</a></p>
 				<p><a class="text-primary font-semibold hover:underline break-all" href={site.emailHref}>{site.email}</a></p>
 			</address>
-			<a class="inline-flex mt-8 items-center justify-center px-7 py-3 rounded-full bg-surface text-primary font-semibold hover:shadow-md transition-shadow" href={site.mapsUrl} target="_blank" rel="noreferrer">
-				Afficher l'itinéraire
-			</a>
 		</div>
 
 		<div class="bg-surface-container-low rounded-[2.5rem] p-8 md:p-12">

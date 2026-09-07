@@ -16,7 +16,7 @@ export async function sendBookingConfirmation(booking: {
 
 	try {
 		const { error } = await resend.emails.send({
-			from: "L'Essence de Soi <onboarding@resend.dev>",
+			from: "La Bulle Calme <onboarding@resend.dev>",
 			to: booking.email,
 			subject: 'Confirmation de votre rendez-vous',
 			html: `<p>Bonjour ${booking.firstName},</p><p>Votre rendez-vous est confirmé le ${formattedDate} à ${booking.startTime.slice(0, 5)}.</p><p>À très bientôt.</p>`

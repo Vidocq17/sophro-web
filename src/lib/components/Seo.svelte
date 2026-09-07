@@ -16,7 +16,7 @@
 	<link rel="canonical" href={canonical} />
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="fr_FR" />
-	<meta property="og:site_name" content="L'Essence de Soi" />
+	<meta property="og:site_name" content="La Bulle Calme" />
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:url" content={canonical} />

@@ -5,6 +5,10 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import { buildLocalBusinessJsonLd } from '$lib/data/site';
 	import { page } from '$app/state';
+	import { dev } from '$app/environment';
+	import { injectAnalytics } from '@vercel/analytics/sveltekit';
+
+	injectAnalytics({ mode: dev ? 'development' : 'production' });
 
 	let { children } = $props();
 	const localBusinessJsonLd = buildLocalBusinessJsonLd();

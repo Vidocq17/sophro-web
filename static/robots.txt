@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /api
 
-Sitemap: https://lessence-de-soi.fr/sitemap.xml
+Sitemap: https://labullecalme.fr/sitemap.xml

@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-	<title>Un imprévu est survenu | L'Essence de Soi</title>
+	<title>Un imprévu est survenu | La Bulle Calme</title>
 	<meta name="robots" content="noindex" />
 </svelte:head>
 

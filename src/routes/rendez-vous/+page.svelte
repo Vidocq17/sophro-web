@@ -57,7 +57,7 @@
 
 <Seo
 	title="Prendre rendez-vous avec une sophrologue à Charenton"
-	description="Réservez votre séance avec Fiona Bemont, sophrologue à Charenton-le-Pont : rendez-vous en soirée la semaine, à Charenton ou en visio le week-end."
+	description="Réservez votre séance avec Fiona Benguigui, sophrologue à Charenton-le-Pont : rendez-vous en soirée la semaine, à Charenton ou en visio le week-end."
 	path="/rendez-vous"
 />
 
