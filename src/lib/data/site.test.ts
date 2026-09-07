@@ -11,14 +11,20 @@ describe('local business SEO data', () => {
 			name: "La Bulle Calme",
 			url: 'https://labullecalme.fr',
 			telephone: '+33786002486',
-			email: 'fiona@labullecalme.com',
+			email: 'Fiona@labullecalme.fr',
+			address: {
+				'@type': 'PostalAddress',
+				postalCode: '94220',
+				addressLocality: 'Charenton-le-Pont',
+				addressCountry: 'FR'
+			}
 		});
 		expect(jsonLd.openingHoursSpecification).toHaveLength(1);
 	});
 
 	test('exposes crawlable contact links', () => {
 		expect(site.phoneHref).toBe('tel:+33786002486');
-		expect(site.emailHref).toBe('mailto:fiona@labullecalme.com');
-		expect(site.mapsUrl).toContain('19%20rue%20de%20la%20R%C3%A9publique');
+		expect(site.emailHref).toBe('mailto:Fiona@labullecalme.fr');
+		expect(site.mapsUrl).toContain('Charenton-le-Pont');
 	});
 });

@@ -7,12 +7,12 @@ export const site = {
 	phoneDisplay: '07 86 00 24 86',
 	phoneInternational: '+33786002486',
 	phoneHref: 'tel:+33786002486',
-	email: 'fiona@labullecalme.com',
-	emailHref: 'mailto:fiona@labullecalme.com',
+	email: 'Fiona@labullecalme.fr',
+	emailHref: 'mailto:Fiona@labullecalme.fr',
 	postalCode: '94220',
 	city: 'Charenton-le-Pont',
 	mapsUrl:
-		'https://www.google.com/maps/search/?api=1&query=19%20rue%20de%20la%20R%C3%A9publique%2C%2094220%20Charenton-le-Pont',
+		'https://www.google.com/maps/search/?api=1&query=La%20Bulle%20Calme%20sophrologue%2C%2094220%20Charenton-le-Pont',
 	weekdayHours: 'Du lundi au vendredi, de 18 h à 22 h',
 	weekendHours: 'Le week-end, en visioconférence ou à Charenton-le-Pont, sur rendez-vous',
 	nearbyCities: ['Saint-Maurice', 'Maisons-Alfort', 'Alfortville', 'Créteil', 'Joinville-le-Pont', 'Vincennes', 'Saint-Mandé']
@@ -29,6 +29,13 @@ export function buildLocalBusinessJsonLd() {
 		url: SITE_URL,
 		telephone: site.phoneInternational,
 		email: site.email,
+		address: {
+			'@type': 'PostalAddress',
+			postalCode: site.postalCode,
+			addressLocality: site.city,
+			addressRegion: 'Île-de-France',
+			addressCountry: 'FR'
+		},
 		areaServed: [site.city, ...site.nearbyCities],
 		openingHoursSpecification: [
 			{

@@ -6,17 +6,17 @@
 		{
 			icon: 'air',
 			title: 'La Respiration',
-			description: 'Apprenez à utiliser votre souffle comme une ancre pour apaiser instantanément votre système nerveux.'
+			description: 'Apprendre à utiliser votre souffle comme une ancre pour apaiser instantanément votre système nerveux.'
 		},
 		{
 			icon: 'accessibility_new',
 			title: 'La Détente Musculaire',
-			description: "Relâchez les tensions accumulées dans le corps pour libérer l'esprit du stress quotidien."
+			description: "Pratiquez des contractions musculaires pour libérer les tensions du corps."
 		},
 		{
 			icon: 'psychology',
 			title: 'La Visualisation',
-			description: 'Sollicitez vos ressources positives pour renforcer votre confiance et votre sérénité.'
+			description: 'Sollicitez vos ressources positives pour améliorer votre quotidien.'
 		}
 	];
 
@@ -98,13 +98,12 @@
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
 		<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4 text-center">Pour qui est-ce fait ?</h2>
 		<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto text-center mb-10">
-			La sophrologie s'adapte à chaque étape de la vie. Que vous soyez un enfant, un adolescent, un adulte ou un
-			senior, les exercices sont personnalisés selon vos capacités.
+			La sophrologie est une pratique accessible à tous. Que vous soyiez un enfant, un adolescend, un adulte ou un sénior, les exercices sont personnalisés selon vos capacités et vos besoins.
 		</p>
 		<ul class="flex flex-wrap justify-center gap-6">
 			<li><a class="flex items-center gap-3 text-primary hover:underline" href="/accompagnements#stress-anxiete"><span class="w-2 h-2 rounded-full bg-primary"></span>Gestion du stress et de l'anxiété</a></li>
 			<li><a class="flex items-center gap-3 text-primary hover:underline" href="/accompagnements#sommeil-fatigue"><span class="w-2 h-2 rounded-full bg-primary"></span>Amélioration du sommeil</a></li>
-			<li><a class="flex items-center gap-3 text-primary hover:underline" href="/accompagnements#preparation-examens"><span class="w-2 h-2 rounded-full bg-primary"></span>Préparation aux examens ou compétitions</a></li>
+			<li><a class="flex items-center gap-3 text-primary hover:underline" href="/accompagnements#preparation-examens"><span class="w-2 h-2 rounded-full bg-primary"></span>Préparation future ( examens, permis de conduire, meetings... )</a></li>
 		</ul>
 	</div>
 </section>

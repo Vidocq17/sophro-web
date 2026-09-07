@@ -23,7 +23,7 @@
 		<div>
 			<h2 class="font-label-md text-label-md uppercase tracking-widest text-primary mb-5">Contact</h2>
 			<address class="not-italic space-y-3 text-secondary">
-				<p>{site.streetAddress}<br />{site.postalCode} {site.city}</p>
+				<p>{site.postalCode} {site.city}</p>
 				<p><a class="hover:text-primary" href={site.phoneHref}>{site.phoneDisplay}</a></p>
 				<p><a class="hover:text-primary break-all" href={site.emailHref}>{site.email}</a></p>
 				<p><a class="font-semibold text-primary hover:underline" href="/contact">Accès et horaires</a></p>

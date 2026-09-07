@@ -21,8 +21,7 @@
 				Sophrologue à Charenton-le-Pont
 			</h1>
 			<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 leading-relaxed">
-				Je vous accompagne avec bienveillance pour mieux gérer votre stress, retrouver un sommeil plus serein et
-				accueillir vos émotions. Les séances ont lieu chez vous ou en visioconférence.
+				Je vous accompagne avec bienveillance pour mieux gérer votre stress, accueillir vos émotions et améliorer votre sommeil. Les séances ont lieu chez vous ou en visioconférence.
 			</p>
 			<div class="flex flex-wrap gap-4">
 				<Button href="/rendez-vous">Prendre rendez-vous</Button>
