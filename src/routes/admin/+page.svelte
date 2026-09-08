@@ -1,6 +1,20 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import type { PageData } from './$types';
 	let { data }: { data: PageData } = $props();
+
+	function translateStatus(b) {
+		if (b.status === 'pending') {
+			return 'En attente';
+		}
+		if (b.status === 'confirmed') {
+			return 'Confirmé';
+		}
+		if (b.status === 'cancelled') {
+			return 'Annulé';
+		}
+		return 'Inconnu';
+	}
 </script>
 
 <svelte:head>
@@ -28,6 +42,7 @@
 					<th class="py-3 pr-4">Client</th>
 					<th class="py-3 pr-4">Contact</th>
 					<th class="py-3 pr-4">Statut</th>
+					<th class="py-3 pr-4">Actions</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -39,7 +54,22 @@
 						<td class="py-3 pr-4">{b.format}</td>
 						<td class="py-3 pr-4">{b.firstName} {b.lastName}</td>
 						<td class="py-3 pr-4">{b.email}<br />{b.phone}</td>
-						<td class="py-3 pr-4">{b.status}</td>
+						<td class="py-3 pr-4">{translateStatus(b)}</td>
+						<td class="py-3 pr-4">
+							{#if b.status === 'pending'}
+								<div class="flex gap-3">
+									<form method="POST" action="?/confirm" use:enhance>
+										<input type="hidden" name="id" value={b.id} />
+										<button type="submit" class="text-primary text-sm hover:cursor-pointer font-semibold">Valider</button>
+									</form>
+									<form method="POST" action="?/remove" use:enhance>
+										<input type="hidden" name="id" value={b.id} />
+										<button type="submit" class="text-error text-sm hover:cursor-pointer">Supprimer</button>
+									</form>
+									<!-- TODO: ajouter un mail en cas de refus ? -->
+								</div>
+							{/if}
+						</td>
 					</tr>
 				{/each}
 			</tbody>

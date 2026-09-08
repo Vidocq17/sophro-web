@@ -197,9 +197,9 @@
 		{#if form?.success}
 			<p role="status" class="p-4 rounded-lg bg-primary-container text-on-primary-container">
 				{#if form.emailSent}
-					Merci ! Votre rendez-vous est confirmé et un email vous a été envoyé.
+					Merci ! Votre demande de rendez-vous a bien été enregistrée, un email de confirmation vous a été envoyé.
 				{:else}
-					Votre rendez-vous est bien confirmé. L'email n'a pas pu être envoyé, pensez à noter le créneau choisi.
+					Votre demande de rendez-vous a bien été enregistrée. L'email n'a pas pu être envoyé, mais Fiona a bien reçu votre demande.
 				{/if}
 			</p>
 		{:else}

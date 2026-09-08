@@ -2,7 +2,7 @@ import type { Actions, PageServerLoad } from './$types';
 import { fail } from '@sveltejs/kit';
 import { getAvailableSlots, createBooking, getSlotDetails } from '$lib/server/bookings';
 import { validateBookingInput } from '$lib/server/validation';
-import { sendBookingConfirmation } from '$lib/server/email';
+import { sendBookingRequestReceived, notifyPractitionerOfBookingRequest } from '$lib/server/email';
 import { loadBookingPage } from '$lib/server/booking-page';
 import { processBooking } from '$lib/server/booking-submission';
 
@@ -30,7 +30,8 @@ export const actions: Actions = {
 		const outcome = await processBooking(result.value, {
 			findSlot: getSlotDetails,
 			create: createBooking,
-			sendConfirmation: sendBookingConfirmation,
+			sendConfirmation: sendBookingRequestReceived,
+			notifyPractitioner: notifyPractitionerOfBookingRequest,
 			reportError: console.error
 		});
 

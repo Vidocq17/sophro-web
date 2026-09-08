@@ -21,6 +21,7 @@ describe('processBooking', () => {
 			findSlot: vi.fn().mockRejectedValue(error),
 			create: vi.fn(),
 			sendConfirmation: vi.fn(),
+			notifyPractitioner: vi.fn(),
 			reportError
 		});
 
@@ -33,6 +34,7 @@ describe('processBooking', () => {
 			findSlot: vi.fn().mockResolvedValue({ date: '2026-09-04', start_time: '19:00' }),
 			create: vi.fn().mockResolvedValue({ ok: true, bookingId: 'booking-1' }),
 			sendConfirmation: vi.fn().mockResolvedValue(false),
+			notifyPractitioner: vi.fn().mockResolvedValue(true),
 			reportError: vi.fn()
 		});
 
@@ -44,6 +46,7 @@ describe('processBooking', () => {
 			findSlot: vi.fn().mockResolvedValue({ date: '2026-09-04', start_time: '19:00' }),
 			create: vi.fn().mockResolvedValue({ ok: false, reason: 'SLOT_FULL' }),
 			sendConfirmation: vi.fn(),
+			notifyPractitioner: vi.fn(),
 			reportError: vi.fn()
 		});
 

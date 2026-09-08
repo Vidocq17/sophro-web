@@ -11,6 +11,15 @@ type Dependencies = {
 		date: string;
 		startTime: string;
 	}) => Promise<boolean>;
+	notifyPractitioner: (booking: {
+		firstName: string;
+		lastName: string;
+		email: string;
+		phone: string;
+		message: string | null;
+		date: string;
+		startTime: string;
+	}) => Promise<boolean>;
 	reportError: (message: string, error: unknown) => void;
 };
 
@@ -30,6 +39,11 @@ export async function processBooking(input: BookingInput, dependencies: Dependen
 			date: slot.date,
 			startTime: slot.start_time
 		});
+		try {
+			await dependencies.notifyPractitioner({ ...input, date: slot.date, startTime: slot.start_time });
+		} catch (error) {
+			dependencies.reportError('Échec de la notification à la praticienne', error);
+		}
 		return { status: 'confirmed', emailSent } as const;
 	} catch (error) {
 		dependencies.reportError('Échec de la réservation', error);
