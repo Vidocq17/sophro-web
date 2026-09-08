@@ -11,7 +11,13 @@
 		collective: { label: 'Séance Collective', description: 'Énergie et partage de groupe', price: '20€', duration: '1h15' }
 	} as const;
 
+	const formatInfo = {
+		visio: { label: 'Visioconférence' },
+		présentiel: { label: 'À domicile' }
+	} as const;
+
 	let selectedType = $state<'individuelle' | 'collective'>('individuelle');
+	let selectedFormat = $state<'visio' | 'présentiel'>('visio');
 	let selectedSlotId = $state<string | null>(null);
 	let submitting = $state(false);
 
@@ -28,7 +34,6 @@
 
 	const slotsByDate = $derived(
 		data.slots
-			.filter((s) => s.session_type === selectedType)
 			.reduce<Record<string, typeof data.slots>>((acc, slot) => {
 				(acc[slot.date] ??= []).push(slot);
 				return acc;
@@ -103,6 +108,20 @@
 							<span class="block font-label-md text-label-md text-primary">{info.price}</span>
 							<span class="block text-xs text-on-surface-variant">{info.duration}</span>
 						</span>
+					</label>
+				{/each}
+			</fieldset>
+
+			<fieldset class="bg-primary-container/20 p-8 rounded-xl">
+				<legend class="font-headline-md text-headline-md text-primary mb-6">Format</legend>
+				{#each Object.entries(formatInfo) as [value, info] (value)}
+					<label
+						class="flex items-center p-4 mb-4 last:mb-0 bg-surface rounded-lg cursor-pointer border {selectedFormat === value
+							? 'border-primary ring-1 ring-primary'
+							: 'border-transparent'}"
+					>
+						<input class="sr-only" type="radio" name="formatChoice" value={value} bind:group={selectedFormat} />
+						<span class="flex-1 font-label-md text-label-md text-on-surface">{info.label}</span>
 					</label>
 				{/each}
 			</fieldset>
@@ -192,6 +211,8 @@
 					</div>
 				{/if}
 				<input type="hidden" name="slotId" value={selectedSlotId ?? ''} />
+				<input type="hidden" name="sessionType" value={selectedType} />
+				<input type="hidden" name="format" value={selectedFormat} />
 				{#if form?.errors?.slotId}
 					<p role="alert" class="text-error text-sm mb-4">{form.errors.slotId}</p>
 				{/if}

@@ -5,8 +5,6 @@ export type Slot = {
 	date: string;
 	start_time: string;
 	end_time: string;
-	session_type: 'individuelle' | 'collective';
-	format: 'cabinet' | 'visio';
 	capacity: number;
 	booked_count: number;
 };
@@ -18,6 +16,8 @@ export type BookingInput = {
 	email: string;
 	phone: string;
 	message: string | null;
+	sessionType: 'individuelle' | 'collective';
+	format: 'visio' | 'présentiel';
 };
 
 export type CreateBookingResult =
@@ -32,7 +32,7 @@ export async function getAvailableSlots(month: string): Promise<Slot[]> {
 
 	const { data, error } = await getSupabaseAdmin()
 		.from('availability_slots')
-		.select('id, date, start_time, end_time, session_type, format, capacity, booked_count')
+		.select('id, date, start_time, end_time, capacity, booked_count')
 		.gte('date', monthStart)
 		.lt('date', nextMonth)
 		.order('date', { ascending: true });
@@ -60,7 +60,9 @@ export async function createBooking(input: BookingInput): Promise<CreateBookingR
 		p_last_name: input.lastName,
 		p_email: input.email,
 		p_phone: input.phone,
-		p_message: input.message
+		p_message: input.message,
+		p_session_type: input.sessionType,
+		p_format: input.format
 	});
 
 	if (error) {

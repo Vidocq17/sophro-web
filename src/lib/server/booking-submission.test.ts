@@ -8,7 +8,9 @@ const input: BookingInput = {
 	lastName: 'Martin',
 	email: 'sophie@example.com',
 	phone: '0612345678',
-	message: null
+	message: null,
+	sessionType: 'individuelle',
+	format: 'visio'
 };
 
 describe('processBooking', () => {

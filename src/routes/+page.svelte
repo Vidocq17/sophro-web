@@ -62,25 +62,25 @@
 <section class="py-section-gap-mobile md:py-section-gap-desktop">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 		<div>
-			<p class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-4">Un cabinet proche de vous</p>
+			<p class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-4">Une professionnelle proche de vous</p>
 			<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Votre sophrologue à Charenton et dans l'est parisien</h2>
 			<p class="text-on-surface-variant leading-relaxed mb-5">
-				Le cabinet accueille les habitants de Charenton-le-Pont et des communes voisines du Val-de-Marne :
+				je me déplace chez les habitants de Charenton-le-Pont et des communes voisines du Val-de-Marne :
 				Saint-Maurice, Maisons-Alfort, Alfortville, Créteil et Joinville-le-Pont. Il est également facilement
 				accessible depuis Vincennes et Saint-Mandé.
 			</p>
 			<p class="text-on-surface-variant leading-relaxed">
 				Les rendez-vous sont proposés en semaine de 18 h à 22 h. Le week-end, les séances ont lieu sur rendez-vous,
-				en visioconférence ou à Charenton-le-Pont.
+				en visioconférence ou à domicile.
 			</p>
 		</div>
 		<div class="bg-primary-container/30 rounded-[2.5rem] p-8 md:p-12 text-center">
-			<h3 class="font-headline-md text-headline-md text-primary mb-5">Cabinet La Bulle Calme</h3>
+			<h3 class="font-headline-md text-headline-md text-primary mb-5">La Bulle Calme</h3>
 			<address class="not-italic space-y-3 text-on-surface-variant">
 				<p><a class="text-primary font-semibold hover:underline" href={site.phoneHref}>{site.phoneDisplay}</a></p>
 				<p><a class="text-primary font-semibold hover:underline" href={site.emailHref}>{site.email}</a></p>
 			</address>
-			<div class="mt-7"><Button href="/contact" variant="secondary">Voir l'accès et les horaires</Button></div>
+			<div class="mt-7"><Button href="/contact" variant="secondary">Voir les horaires et la zone couverte</Button></div>
 		</div>
 	</div>
 </section>

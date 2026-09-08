@@ -24,6 +24,7 @@
 					<th class="py-3 pr-4">Date</th>
 					<th class="py-3 pr-4">Heure</th>
 					<th class="py-3 pr-4">Type</th>
+					<th class="py-3 pr-4">Format</th>
 					<th class="py-3 pr-4">Client</th>
 					<th class="py-3 pr-4">Contact</th>
 					<th class="py-3 pr-4">Statut</th>
@@ -35,6 +36,7 @@
 						<td class="py-3 pr-4">{new Date(b.date).toLocaleDateString('fr-FR')}</td>
 						<td class="py-3 pr-4">{b.startTime.slice(0, 5)}</td>
 						<td class="py-3 pr-4">{b.sessionType}</td>
+						<td class="py-3 pr-4">{b.format}</td>
 						<td class="py-3 pr-4">{b.firstName} {b.lastName}</td>
 						<td class="py-3 pr-4">{b.email}<br />{b.phone}</td>
 						<td class="py-3 pr-4">{b.status}</td>

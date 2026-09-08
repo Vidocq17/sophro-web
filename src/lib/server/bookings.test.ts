@@ -17,8 +17,6 @@ vi.mock('$lib/server/supabase', () => ({
 										date: '2026-09-04',
 										start_time: '09:00',
 										end_time: '10:00',
-										session_type: 'individuelle',
-										format: 'cabinet',
 										capacity: 1,
 										booked_count: 0
 									},
@@ -27,8 +25,6 @@ vi.mock('$lib/server/supabase', () => ({
 										date: '2026-09-04',
 										start_time: '14:00',
 										end_time: '15:00',
-										session_type: 'individuelle',
-										format: 'cabinet',
 										capacity: 1,
 										booked_count: 1
 									}
@@ -62,7 +58,9 @@ describe('createBooking', () => {
 			lastName: 'Martin',
 			email: 'sophie@example.com',
 			phone: '0612345678',
-			message: null
+			message: null,
+			sessionType: 'individuelle',
+			format: 'visio'
 		});
 		expect(result).toEqual({ ok: true, bookingId: 'booking-1' });
 		expect(rpcMock).toHaveBeenCalledWith('book_slot', {
@@ -71,7 +69,9 @@ describe('createBooking', () => {
 			p_last_name: 'Martin',
 			p_email: 'sophie@example.com',
 			p_phone: '0612345678',
-			p_message: null
+			p_message: null,
+			p_session_type: 'individuelle',
+			p_format: 'visio'
 		});
 	});
 
@@ -83,7 +83,9 @@ describe('createBooking', () => {
 			lastName: 'Petit',
 			email: 'marc@example.com',
 			phone: '0698765432',
-			message: null
+			message: null,
+			sessionType: 'individuelle',
+			format: 'visio'
 		});
 		expect(result).toEqual({ ok: false, reason: 'SLOT_FULL' });
 	});

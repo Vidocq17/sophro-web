@@ -6,7 +6,7 @@ export const load: PageServerLoad = async () => {
 	try {
 		const { data, error } = await getSupabaseAdmin()
 			.from('availability_slots')
-			.select('id, date, start_time, end_time, session_type, format, capacity, booked_count')
+			.select('id, date, start_time, end_time, capacity, booked_count')
 			.gte('date', new Date().toISOString().slice(0, 10))
 			.order('date', { ascending: true });
 
@@ -18,29 +18,49 @@ export const load: PageServerLoad = async () => {
 	}
 };
 
+const WEEKDAY_COUNT = 7;
+
+function datesForWeekdays(startDate: string, weeks: number, weekdays: number[]): string[] {
+	const start = new Date(`${startDate}T00:00:00`);
+	const dates: string[] = [];
+	for (let offset = 0; offset < weeks * WEEKDAY_COUNT; offset++) {
+		const d = new Date(start);
+		d.setDate(start.getDate() + offset);
+		if (weekdays.includes(d.getDay())) dates.push(d.toISOString().slice(0, 10));
+	}
+	return dates;
+}
+
 export const actions: Actions = {
 	create: async ({ request }) => {
 		const formData = await request.formData();
-		const date = String(formData.get('date') ?? '');
+		const startDate = String(formData.get('startDate') ?? '');
+		const weeks = Number(formData.get('weeks') ?? 1);
+		const weekdays = formData.getAll('weekdays').map(Number);
 		const startTime = String(formData.get('startTime') ?? '');
 		const endTime = String(formData.get('endTime') ?? '');
-		const sessionType = String(formData.get('sessionType') ?? '');
-		const format = String(formData.get('format') ?? '');
 		const capacity = Number(formData.get('capacity') ?? 1);
 
-		if (!date || !startTime || !endTime || !sessionType || !format) {
-			return fail(400, { error: 'Tous les champs sont requis.' });
+		if (!startDate || !startTime || !endTime || weekdays.length === 0) {
+			return fail(400, { error: 'Tous les champs sont requis, avec au moins un jour coché.' });
+		}
+		if (!Number.isInteger(capacity) || capacity < 1 || capacity > 10) {
+			return fail(400, { error: 'La capacité doit être comprise entre 1 et 10 personnes.' });
 		}
 
+		const dates = datesForWeekdays(startDate, weeks, weekdays);
+
 		try {
-			const { error } = await getSupabaseAdmin().from('availability_slots').insert({
-				date,
-				start_time: startTime,
-				end_time: endTime,
-				session_type: sessionType,
-				format,
-				capacity
-			});
+			const { error } = await getSupabaseAdmin()
+				.from('availability_slots')
+				.insert(
+					dates.map((date) => ({
+						date,
+						start_time: startTime,
+						end_time: endTime,
+						capacity
+					}))
+				);
 
 			if (error) throw error;
 			return { success: true };

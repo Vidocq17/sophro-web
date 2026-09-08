@@ -22,7 +22,7 @@
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter pb-section-gap-mobile md:pb-section-gap-desktop">
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 		<div class="bg-primary-container/25 rounded-[2.5rem] p-8 md:p-12">
-			<h2 class="font-headline-lg text-headline-lg text-primary mb-7">Coordonnées du cabinet</h2>
+			<h2 class="font-headline-lg text-headline-lg text-primary mb-7">Me contacter</h2>
 			<address class="not-italic space-y-5 text-on-surface-variant">
 				<div>
 					<p class="font-semibold text-on-surface">{site.practitioner} · {site.name}</p>
@@ -52,11 +52,11 @@
 
 <section class="bg-surface-container-low py-section-gap-mobile md:py-section-gap-desktop">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-		<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Un cabinet accessible depuis le Val-de-Marne</h2>
+		<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Des séances à domicile dans le Val-de-Marne</h2>
 		<p class="text-on-surface-variant leading-relaxed max-w-3xl">
-			Situé à Charenton-le-Pont dans le Val-de-Marne (94), le cabinet reçoit notamment les personnes venant de
-			{site.nearbyCities.slice(0, -1).join(', ')} et {site.nearbyCities.at(-1)}. Si vous ne pouvez pas vous déplacer,
-			la visioconférence permet de suivre une séance depuis chez vous.
+			Basée à Charenton-le-Pont dans le Val-de-Marne (94), Fiona se déplace chez vous notamment à
+			{site.nearbyCities.slice(0, -1).join(', ')} et {site.nearbyCities.at(-1)}. Si vous préférez rester chez vous
+			sans vous soucier du déplacement, la visioconférence permet de suivre une séance à distance.
 		</p>
 	</div>
 </section>

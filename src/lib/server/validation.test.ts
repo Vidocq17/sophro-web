@@ -7,7 +7,9 @@ const validRaw = {
 	lastName: 'Martin',
 	email: 'sophie@example.com',
 	phone: '0612345678',
-	message: 'Bonjour'
+	message: 'Bonjour',
+	sessionType: 'individuelle',
+	format: 'visio'
 };
 
 describe('validateBookingInput', () => {
@@ -21,7 +23,9 @@ describe('validateBookingInput', () => {
 				lastName: 'Martin',
 				email: 'sophie@example.com',
 				phone: '0612345678',
-				message: 'Bonjour'
+				message: 'Bonjour',
+				sessionType: 'individuelle',
+				format: 'visio'
 			}
 		});
 	});
@@ -39,6 +43,11 @@ describe('validateBookingInput', () => {
 	it('rejects an invalid email', () => {
 		const result = validateBookingInput({ ...validRaw, email: 'not-an-email' });
 		expect(result).toEqual({ ok: false, errors: { email: 'Adresse email invalide.' } });
+	});
+
+	it('rejects an invalid session type', () => {
+		const result = validateBookingInput({ ...validRaw, sessionType: 'groupe' });
+		expect(result).toEqual({ ok: false, errors: { sessionType: 'Merci de choisir un type de séance.' } });
 	});
 
 	it('collects multiple errors at once', () => {
