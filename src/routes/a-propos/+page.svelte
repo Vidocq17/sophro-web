@@ -1,7 +1,6 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
 	import Seo from '$lib/components/Seo.svelte';
-	import fionaPortrait from '$lib/assets/fiona-portrait-placeholder.jpg';
 
 	const values = [
 		{
@@ -44,14 +43,14 @@
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
 		<div class="md:col-span-5">
 			<img
-				src={fionaPortrait}
+				src="/fiona-benguigui-sophrologue-charenton.webp"
 				alt="Fiona Benguigui, sophrologue à Charenton-le-Pont"
-				width="800"
-				height="1000"
+				width="1200"
+				height="1600"
 				fetchpriority="high"
 				loading="eager"
 				decoding="async"
-				class="aspect-[4/5] w-full rounded-2xl shadow-sm object-cover"
+				class="aspect-[4/5] w-full rounded-2xl shadow-sm object-cover object-top"
 			/>
 		</div>
 		<div class="md:col-span-7 md:pl-12">
