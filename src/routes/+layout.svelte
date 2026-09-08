@@ -1,6 +1,6 @@
 <script lang="ts">
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import favicon from '$lib/assets/favicon.ico';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import { buildLocalBusinessJsonLd } from '$lib/data/site';
@@ -15,7 +15,7 @@
 </script>
 
 <svelte:head>
-	<link rel="icon" href={favicon} />
+	<link rel="icon" type="image/x-icon" href={favicon} />
 	{@html `<script type="application/ld+json">${JSON.stringify(localBusinessJsonLd)}</script>`}
 </svelte:head>
 

@@ -6,7 +6,7 @@
 
 <Seo
 	title="Accompagnements en sophrologie à Charenton-le-Pont"
-	description="Sophrologie à Charenton-le-Pont pour le stress, le sommeil, les émotions, le burn-out, la maternité, les examens, les enfants et adolescents."
+	description="Sophrologie à Charenton-le-Pont pour le stress, le sommeil, les émotions, le burn-out, les examens, les enfants et adolescents."
 	path="/accompagnements"
 />
 

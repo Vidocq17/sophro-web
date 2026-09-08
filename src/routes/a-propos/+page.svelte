@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Button from '$lib/components/Button.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import fionaPortrait from '$lib/assets/fiona-portrait-placeholder.jpg';
 
 	const values = [
 		{
@@ -42,13 +43,16 @@
 <section class="py-section-gap-mobile md:py-section-gap-desktop">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
 		<div class="md:col-span-5">
-			<div
-				class="aspect-[4/5] rounded-2xl shadow-sm bg-primary-container/40 flex items-center justify-center"
-				role="img"
-				aria-label="Portrait de Fiona Benguigui, sophrologue"
-			>
-				<span class="material-symbols-outlined text-primary text-8xl" aria-hidden="true">spa</span>
-			</div>
+			<img
+				src={fionaPortrait}
+				alt="Fiona Benguigui, sophrologue à Charenton-le-Pont"
+				width="800"
+				height="1000"
+				fetchpriority="high"
+				loading="eager"
+				decoding="async"
+				class="aspect-[4/5] w-full rounded-2xl shadow-sm object-cover"
+			/>
 		</div>
 		<div class="md:col-span-7 md:pl-12">
 			<span class="text-primary font-label-md text-label-md uppercase tracking-widest mb-4 block">Mon Histoire</span>

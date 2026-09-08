@@ -13,7 +13,7 @@
 	description="Fiona Benguigui, sophrologue à Charenton-le-Pont, vous accompagne pour le stress, le sommeil et les émotions. Séances en soirée et en visio le week-end."
 />
 
-<section class="relative min-h-[80vh] flex items-center">
+<section class="relative min-h-[60vh] flex items-center">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
 		<div class="max-w-2xl">
 			<p class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-4">Fiona Benguigui · Charenton-le-Pont</p>
