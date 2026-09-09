@@ -1,5 +1,11 @@
 @import 'tailwindcss';
 
+:root {
+	--ease-sophro: cubic-bezier(0.22, 1, 0.36, 1);
+	--transition-soft: 400ms var(--ease-sophro);
+	--transition-medium: 400ms var(--ease-sophro);
+}
+
 @theme {
 	--color-surface-dim: #dbdad7;
 	--color-secondary: #6d595e;
@@ -101,8 +107,83 @@
 	--text-label-md--font-weight: 600;
 }
 
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	@apply bg-background text-on-background font-body-md antialiased;
+}
+
+main {
+	overflow-x: clip;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+a,
+button,
+[role='button'],
+.material-symbols-outlined {
+	transition:
+		color var(--transition-soft),
+		background-color var(--transition-soft),
+		border-color var(--transition-soft),
+		transform var(--transition-soft),
+		box-shadow var(--transition-medium),
+		opacity var(--transition-soft),
+		filter var(--transition-soft);
+}
+
+.page-shell {
+	opacity: 0;
+	transform: translateY(10px);
+	transition: opacity 400ms var(--ease-sophro), transform 400ms var(--ease-sophro);
+	will-change: opacity, transform;
+}
+
+.page-shell.page-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.soft-reveal {
+	opacity: 0;
+	transform: translateY(18px);
+	animation: softReveal 400ms var(--ease-sophro) forwards;
+}
+
+.soft-card {
+	will-change: transform, box-shadow, background-color;
+}
+
+@keyframes softReveal {
+	from {
+		opacity: 0;
+		transform: translateY(18px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
 }
 
 .sr-only-focusable:not(:focus) {

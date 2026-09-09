@@ -129,10 +129,10 @@
 		<h2 class="font-headline-lg text-headline-lg text-on-surface mb-6">Vos questions fréquentes</h2>
 		<div class="space-y-4">
 			{#each faq as f (f.q)}
-				<details class="group bg-surface-container rounded-2xl p-6">
-					<summary class="flex items-center justify-between cursor-pointer list-none font-headline-md text-headline-md text-on-surface">
+				<details class="group cursor-pointer bg-surface-container rounded-2xl p-6">
+					<summary class="flex items-center justify-between list-none font-headline-md text-headline-md text-on-surface">
 						{f.q}
-						<span class="material-symbols-outlined transition-transform group-open:rotate-180" aria-hidden="true">expand_more</span>
+						<span class="material-symbols-outlined transition-transform duration-300 ease-out group-open:rotate-180" aria-hidden="true">expand_more</span>
 					</summary>
 					<p class="mt-4 text-on-surface-variant leading-relaxed">{f.a}</p>
 				</details>

@@ -23,9 +23,9 @@
 				<a
 					href={link.href}
 					aria-current={currentPath === link.href ? 'page' : undefined}
-					class="font-label-md text-label-md transition-colors duration-300 {currentPath === link.href
-						? 'text-primary font-bold border-b-2 border-primary'
-						: 'text-on-surface-variant hover:text-primary'}"
+					class="group relative pb-1 font-label-md text-label-md transition-colors duration-300 after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-full after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out {currentPath === link.href
+						? 'text-primary font-bold after:scale-x-100'
+						: 'text-on-surface-variant hover:text-primary hover:after:scale-x-100'}"
 				>
 					{link.label}
 				</a>
@@ -44,7 +44,7 @@
 			</summary>
 			<div class="absolute right-0 top-12 w-64 bg-surface rounded-2xl shadow-lg border border-outline-variant/30 p-3">
 				{#each links as link (link.href)}
-					<a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined} class="block px-4 py-3 rounded-xl text-on-surface-variant hover:bg-primary-container/30 hover:text-primary">
+					<a href={link.href} aria-current={currentPath === link.href ? 'page' : undefined} class="group relative block px-4 py-3 rounded-xl text-on-surface-variant transition-colors duration-300 after:content-[''] after:absolute after:left-4 after:right-4 after:-bottom-1 after:h-0.5 after:origin-left after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:text-primary hover:after:scale-x-100 {currentPath === link.href ? 'text-primary font-bold after:scale-x-100' : ''}">
 						{link.label}
 					</a>
 				{/each}

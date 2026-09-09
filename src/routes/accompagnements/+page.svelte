@@ -22,7 +22,7 @@
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter pb-section-gap-mobile md:pb-section-gap-desktop">
 	<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
 		{#each accompagnements as a (a.title)}
-			<article id={a.slug} class="bg-surface-container-low p-8 rounded-[32px] flex flex-col justify-between scroll-mt-28">
+			<article id={a.slug} class="bg-surface-container-low p-8 rounded-[32px] flex flex-col justify-between scroll-mt-28 hover:transform hover:scale-105 transition-all duration-300 ease-in-out">
 				<div>
 					<div class="w-16 h-16 mb-6 rounded-2xl bg-primary-container/40 flex items-center justify-center text-primary">
 						<span class="material-symbols-outlined text-4xl" aria-hidden="true">{a.icon}</span>

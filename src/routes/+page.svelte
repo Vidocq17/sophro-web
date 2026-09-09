@@ -13,7 +13,7 @@
 	description="Fiona Benguigui, sophrologue à Charenton-le-Pont, vous accompagne pour le stress, le sommeil et les émotions. Séances en soirée et en visio le week-end."
 />
 
-<section class="relative min-h-[60vh] flex items-center">
+<section class="soft-reveal relative min-h-[60vh] flex items-center">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
 		<div class="max-w-2xl">
 			<p class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-4">Fiona Benguigui · Charenton-le-Pont</p>
@@ -31,7 +31,7 @@
 	</div>
 </section>
 
-<section class="py-section-gap-mobile md:py-section-gap-desktop bg-surface-container-low">
+<section class="soft-reveal py-section-gap-mobile md:py-section-gap-desktop bg-surface-container-low">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
 		<div class="text-center max-w-2xl mx-auto mb-16">
 			<h2 class="font-headline-lg text-headline-lg text-primary mb-4">Mes Accompagnements</h2>
@@ -41,8 +41,8 @@
 		</div>
 		<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 			{#each highlights as item (item.title)}
-				<a href="/accompagnements#{item.slug}" class="block bg-surface rounded-3xl p-8 shadow-sm hover:shadow-md transition-all hover:-translate-y-1">
-					<div class="w-16 h-16 bg-primary-container rounded-2xl mb-6 flex items-center justify-center">
+				<a href="/accompagnements#{item.slug}" class="soft-card group relative block bg-surface rounded-3xl p-8 shadow-sm transition-all duration-400 ease-out hover:-translate-y-1.5 hover:shadow-[0_18px_36px_rgba(81,99,84,0.12)]">
+					<div class="w-16 h-16 bg-primary-container rounded-2xl mb-6 flex items-center justify-center transition-transform duration-400 ease-out group-hover:scale-110">
 						<span class="material-symbols-outlined text-on-primary-container text-3xl" aria-hidden="true"
 							>{item.icon}</span
 						>
@@ -59,7 +59,7 @@
 	</div>
 </section>
 
-<section class="py-section-gap-mobile md:py-section-gap-desktop">
+<section class="soft-reveal py-section-gap-mobile md:py-section-gap-desktop">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 		<div>
 			<p class="font-label-md text-label-md text-secondary uppercase tracking-widest mb-4">Une professionnelle proche de vous</p>
@@ -74,7 +74,7 @@
 				en visioconférence ou à domicile.
 			</p>
 		</div>
-		<div class="bg-primary-container/30 rounded-[2.5rem] p-8 md:p-12 text-center">
+		<div class="bg-primary-container/30 rounded-[2.5rem] p-8 md:p-12 text-center transition-all duration-400 ease-out hover:-translate-y-0.5 hover:shadow-[0_18px_36px_rgba(81,99,84,0.08)]">
 			<h3 class="font-headline-md text-headline-md text-primary mb-5">La Bulle Calme</h3>
 			<address class="not-italic space-y-3 text-on-surface-variant">
 				<p><a class="text-primary font-semibold hover:underline" href={site.phoneHref}>{site.phoneDisplay}</a></p>
@@ -85,7 +85,7 @@
 	</div>
 </section>
 
-<section class="py-section-gap-mobile md:py-section-gap-desktop bg-primary text-on-primary rounded-[4rem] mx-4 md:mx-10 my-10">
+<section class="soft-reveal py-section-gap-mobile md:py-section-gap-desktop bg-primary text-on-primary rounded-[4rem] mx-4 md:mx-10 my-10">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
 		<div class="text-center mb-16">
 			<h2 class="font-headline-lg text-headline-lg mb-4">Paroles de patients</h2>
@@ -93,7 +93,7 @@
 		</div>
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 			{#each testimonials as t (t.name)}
-				<div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10">
+				<div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10 transition-all duration-400 ease-out hover:-translate-y-1 hover:bg-white/15">
 					<p class="italic mb-6 text-sm leading-relaxed">"{t.quote}"</p>
 					<p class="font-bold text-primary-fixed">{t.name}</p>
 				</div>
@@ -102,9 +102,9 @@
 	</div>
 </section>
 
-<section class="py-section-gap-mobile md:py-section-gap-desktop">
+<section class="soft-reveal py-section-gap-mobile md:py-section-gap-desktop">
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter">
-		<div class="bg-secondary-container rounded-[3rem] p-12 md:p-20 text-center">
+		<div class="bg-secondary-container rounded-[3rem] p-12 md:p-20 text-center transition-all duration-400 ease-out hover:shadow-[0_18px_36px_rgba(81,99,84,0.08)]">
 			<h2 class="font-headline-lg text-headline-lg text-primary mb-6">Prêt(e) à prendre soin de vous ?</h2>
 			<p class="text-on-secondary-container max-w-xl mx-auto mb-10 text-body-lg">
 				Le premier pas vers le changement commence par une respiration. Réservez votre première séance dès

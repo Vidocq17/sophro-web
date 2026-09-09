@@ -3,7 +3,9 @@
 	import type { PageData } from './$types';
 	let { data }: { data: PageData } = $props();
 
-	function translateStatus(b) {
+	type BookingStatus = 'pending' | 'confirmed' | 'cancelled';
+
+	function translateStatus(b: { status: BookingStatus | string }) {
 		if (b.status === 'pending') {
 			return 'En attente';
 		}

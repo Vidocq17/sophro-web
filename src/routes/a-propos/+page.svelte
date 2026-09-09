@@ -1,6 +1,26 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import Button from '$lib/components/Button.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import citations from '$lib/data/citations.json';
+
+	let quoteIndex = $state(0);
+	let isQuoteVisible = $state(true);
+
+	let currentQuote = $derived(citations[quoteIndex]);
+
+	const switchQuote = () => {
+		isQuoteVisible = false;
+		window.setTimeout(() => {
+			quoteIndex = (quoteIndex + 1) % citations.length;
+			isQuoteVisible = true;
+		}, 400);
+	};
+
+	onMount(() => {
+		const interval = window.setInterval(switchQuote, 5000);
+		return () => window.clearInterval(interval);
+	});
 
 	const values = [
 		{
@@ -65,20 +85,28 @@
 				<span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Accompagnement personnalisé</span>
 				<span class="bg-primary-container text-on-primary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Amélioration du quotidien</span>
 				<span class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Gestion du Stress</span>
-				<span class="bg-surface-container-low text-on-surface-container-low px-4 py-2 rounded-full font-label-md text-label-md italic">Épanouissement Personnel</span>
-				<span class="bg-surface-container-high text-on-surface-container-high px-4 py-2 rounded-full font-label-md text-label-md italic">Gestion des émotions</span>
-				<span class="bg-surface-container-medium text-on-surface-container-medium px-4 py-2 rounded-full font-label-md text-label-md italic">Estime de soi</span>
+				<span class="bg-primary-fixed text-on-primary-fixed px-4 py-2 rounded-full font-label-md text-label-md italic">Épanouissement Personnel</span>
+				<span class="bg-secondary-container text-on-secondary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Gestion des émotions</span>
+				<span class="bg-tertiary-container text-on-tertiary-container px-4 py-2 rounded-full font-label-md text-label-md italic">Estime de soi</span>
 			</div>
 		</div>
 	</div>
 </section>
 
-<section class="bg-surface-container-low py-20">
-	<div class="max-w-3xl mx-auto px-margin-mobile text-center">
-		<blockquote class="font-headline-lg text-headline-lg md:text-4xl text-secondary italic mb-6">
-			"Le bien-être n'est pas l'absence de tempête, mais la capacité à rester calme au centre de celle-ci."
+<section class="bg-surface-container-low py-10">
+	<div class="mx-auto min-h-35 px-margin-mobile text-center transition-all duration-400 ease-out opacity-100 translate-y-0">
+		<blockquote
+			aria-live="polite"
+			class="font-headline-lg text-headline-lg md:text-4xl text-secondary italic mb-6 transition-all duration-400 ease-out {isQuoteVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}"
+		>
+			"{currentQuote.text}"
 		</blockquote>
-		<cite class="font-label-md text-label-md text-outline">— Sagesse Intérieure</cite>
+		<cite
+			itemprop="author"
+			class="font-label-md text-label-md text-outline transition-all duration-400 ease-out {isQuoteVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}"
+		>
+			— {currentQuote.author}
+		</cite>
 	</div>
 </section>
 
