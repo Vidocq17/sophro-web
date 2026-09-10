@@ -62,11 +62,11 @@
 								<div class="flex gap-3">
 									<form method="POST" action="?/confirm" use:enhance>
 										<input type="hidden" name="id" value={b.id} />
-										<button type="submit" class="text-primary text-sm hover:cursor-pointer font-semibold">Valider</button>
+										<button type="submit" class="bg-primary text-on-primary px-4 sm:px-6 py-2.5 rounded-full font-label-md text-label-md hover:bg-on-primary-container transition-all active:scale-95">Valider</button>
 									</form>
 									<form method="POST" action="?/remove" use:enhance>
 										<input type="hidden" name="id" value={b.id} />
-										<button type="submit" class="text-error text-sm hover:cursor-pointer">Supprimer</button>
+										<button type="submit" class="bg-error text-on-error px-4 sm:px-6 py-2.5 rounded-full font-label-md text-label-md hover:opacity-90 transition-all active:scale-95">Supprimer</button>
 									</form>
 									<!-- TODO: ajouter un mail en cas de refus ? -->
 								</div>

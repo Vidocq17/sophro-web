@@ -7,7 +7,37 @@ function formatDate(date: string): string {
 	return new Date(date).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
 }
 
-async function send(payload: { from: string; to: string; subject: string; html: string }): Promise<boolean> {
+function toIcsDate(date: string, time: string): string {
+	return `${date.replaceAll('-', '')}T${time.replaceAll(':', '').slice(0, 6)}`;
+}
+
+// ponytail: assumes a 1h slot since slot end_time isn't tracked on the booking; pass a real end time if that changes
+function buildBookingIcs(booking: { firstName: string; lastName: string; date: string; startTime: string }): string {
+	const start = new Date(`${booking.date}T${booking.startTime}`);
+	const end = new Date(start.getTime() + 60 * 60 * 1000);
+	const endTime = end.toTimeString().slice(0, 8);
+	return [
+		'BEGIN:VCALENDAR',
+		'VERSION:2.0',
+		'PRODID:-//La Bulle Calme//Booking//FR',
+		'BEGIN:VEVENT',
+		`UID:${crypto.randomUUID()}@labullecalme.fr`,
+		`DTSTAMP:${toIcsDate(new Date().toISOString().slice(0, 10), new Date().toISOString().slice(11, 19))}Z`,
+		`DTSTART:${toIcsDate(booking.date, booking.startTime)}`,
+		`DTEND:${toIcsDate(booking.date, endTime)}`,
+		`SUMMARY:RDV ${booking.firstName} ${booking.lastName}`,
+		'END:VEVENT',
+		'END:VCALENDAR'
+	].join('\r\n');
+}
+
+async function send(payload: {
+	from: string;
+	to: string;
+	subject: string;
+	html: string;
+	attachments?: { filename: string; content: string }[];
+}): Promise<boolean> {
 	const resend = new Resend(env.RESEND_API_KEY);
 	try {
 		const { error } = await resend.emails.send(payload);
@@ -49,7 +79,13 @@ export async function notifyPractitionerOfBookingRequest(booking: {
 		from: "La Bulle Calme <contact@labullecalme.fr>",
 		to: PRACTITIONER_EMAIL,
 		subject: 'Nouvelle demande de rendez-vous',
-		html: `<p>${booking.firstName} ${booking.lastName} demande un rendez-vous le ${formatDate(booking.date)} à ${booking.startTime.slice(0, 5)}.</p><p>Email : ${booking.email}<br>Téléphone : ${booking.phone}</p>${booking.message ? `<p>Message : ${booking.message}</p>` : ''}<p>À valider dans l'espace admin ici : <a href="https://labullecalme.fr/admin">Espace Admin</a>.</p>`
+		html: `<p>${booking.firstName} ${booking.lastName} demande un rendez-vous le ${formatDate(booking.date)} à ${booking.startTime.slice(0, 5)}.</p><p>Email : ${booking.email}<br>Téléphone : ${booking.phone}</p>${booking.message ? `<p>Message : ${booking.message}</p>` : ''}<p>À valider dans l'espace admin ici : <a href="https://labullecalme.fr/admin">Espace Admin</a>.</p>`,
+		attachments: [
+			{
+				filename: 'rendez-vous.ics',
+				content: btoa(buildBookingIcs(booking))
+			}
+		]
 	});
 }
 

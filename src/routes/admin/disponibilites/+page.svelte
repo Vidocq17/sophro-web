@@ -75,7 +75,7 @@
 			</span>
 			<form method="POST" action="?/delete" use:enhance>
 				<input type="hidden" name="id" value={slot.id} />
-				<button type="submit" class="text-error text-sm">Supprimer</button>
+				<button type="submit" class="bg-error text-on-error px-4 py-1.5 rounded-full text-sm">Supprimer</button>
 			</form>
 		</div>
 	{/each}
