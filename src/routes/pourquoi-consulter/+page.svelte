@@ -58,7 +58,7 @@
 </script>
 
 <Seo
-	title="Pourquoi consulter une sophrologue à Charenton-le-Pont ?"
+	title="Pourquoi consulter une sophrologue à Charenton-le-Pont ? | La Bulle Calme"
 	description="Découvrez la sophrologie, ses exercices de respiration et de détente, le déroulement d'une séance à Charenton-le-Pont et les réponses aux questions fréquentes."
 	path="/pourquoi-consulter"
 />

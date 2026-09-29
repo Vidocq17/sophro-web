@@ -1,5 +1,12 @@
 export const SITE_URL = 'https://labullecalme.fr';
 
+export const SOCIAL_IMAGE = {
+	url: `${SITE_URL}/fiona-benguigui-sophrologue-charenton.webp`,
+	width: 1200,
+	height: 1600,
+	alt: 'Fiona Benguigui, sophrologue à Charenton-le-Pont'
+} as const;
+
 export const site = {
 	name: "La Bulle Calme",
 	practitioner: 'Fiona Benguigui',
@@ -27,6 +34,7 @@ export function buildLocalBusinessJsonLd() {
 		description:
 			'Séances de sophrologie à domicile dans le Val-de-Marne et en visioconférence pour la gestion du stress, du sommeil et des émotions.',
 		url: SITE_URL,
+		image: SOCIAL_IMAGE.url,
 		telephone: site.phoneInternational,
 		email: site.email,
 		address: {
@@ -44,7 +52,19 @@ export function buildLocalBusinessJsonLd() {
 				opens: '18:00',
 				closes: '22:00'
 			}
-		],
-		priceRange: '€€'
+		]
+	};
+}
+
+export function buildPersonJsonLd() {
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'Person',
+		'@id': `${SITE_URL}/#fiona-benguigui`,
+		name: site.practitioner,
+		jobTitle: 'Sophrologue',
+		url: `${SITE_URL}/a-propos`,
+		image: SOCIAL_IMAGE.url,
+		worksFor: { '@id': `${SITE_URL}/#sophrologue` }
 	};
 }

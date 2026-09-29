@@ -54,7 +54,7 @@
 </script>
 
 <Seo
-	title="Fiona Benguigui, sophrologue à Charenton-le-Pont"
+	title="Fiona Benguigui, sophrologue à Charenton-le-Pont | La Bulle Calme"
 	description="Découvrez Fiona Benguigui, sophrologue à Charenton-le-Pont, son approche bienveillante et sa pratique auprès des particuliers et des groupes."
 	path="/a-propos"
 />
@@ -75,7 +75,7 @@
 		</div>
 		<div class="md:col-span-7 md:pl-12">
 			<span class="text-primary font-label-md text-label-md uppercase tracking-widest mb-4 block">Mon Histoire</span>
-			<h1 class="font-headline-display text-headline-display text-on-surface mb-6">Je suis Fiona Benguigui</h1>
+			<h1 class="font-headline-display text-headline-display text-on-surface mb-6">Fiona Benguigui, sophrologue à Charenton-le-Pont</h1>
 			<p class="font-body-lg text-body-lg text-on-surface-variant mb-8 leading-relaxed">
 				Sophrologue et passionnée par l'humain, j'aide les personnes à retrouver leur équilibre intérieur
 				et à cultiver leur résilience face aux défis du quotidien. Mon approche mêle rigueur professionnelle et

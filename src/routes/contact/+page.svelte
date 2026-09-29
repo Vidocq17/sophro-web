@@ -5,7 +5,7 @@
 </script>
 
 <Seo
-	title="Contact et accès | Sophrologue à Charenton-le-Pont"
+	title="Contact et accès, sophrologue à Charenton-le-Pont | La Bulle Calme"
 	description="Contactez Fiona Benguigui, sophrologue à Charenton-le-Pont. Rendez-vous en semaine de 18 h à 22 h et le week-end sur rendez-vous."
 	path="/contact"
 />
