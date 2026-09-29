@@ -5,7 +5,7 @@
 </script>
 
 <Seo
-	title="Accompagnements en sophrologie à Charenton-le-Pont"
+	title="Accompagnements en sophrologie à Charenton-le-Pont | La Bulle Calme"
 	description="Sophrologie à Charenton-le-Pont pour le stress, le sommeil, les émotions, le burn-out, les examens, les enfants et adolescents."
 	path="/accompagnements"
 />

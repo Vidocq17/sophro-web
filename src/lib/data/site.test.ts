@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'vitest';
-import { buildLocalBusinessJsonLd, site } from './site';
+import { buildLocalBusinessJsonLd, buildPersonJsonLd, site } from './site';
 
 describe('local business SEO data', () => {
 	test('publishes complete contact and location data for search engines', () => {
@@ -20,6 +20,11 @@ describe('local business SEO data', () => {
 			}
 		});
 		expect(jsonLd.openingHoursSpecification).toHaveLength(1);
+		expect(jsonLd).not.toHaveProperty('priceRange');
+	});
+
+	test('links the practitioner to the business by @id', () => {
+		expect(buildPersonJsonLd().worksFor['@id']).toBe(buildLocalBusinessJsonLd()['@id']);
 	});
 
 	test('exposes crawlable contact links', () => {

@@ -61,13 +61,13 @@
 </script>
 
 <Seo
-	title="Prendre rendez-vous avec une sophrologue à Charenton"
+	title="Rendez-vous sophrologie à Charenton-le-Pont | La Bulle Calme"
 	description="Réservez votre séance avec Fiona Benguigui, sophrologue à Charenton-le-Pont : rendez-vous en soirée la semaine, à Charenton ou en visio le week-end."
 	path="/rendez-vous"
 />
 
 <section class="max-w-container-max mx-auto px-margin-mobile md:px-gutter mb-16 text-center">
-	<h1 class="font-headline-display text-headline-display text-primary mb-4">Réservez votre instant de sérénité</h1>
+	<h1 class="font-headline-display text-headline-display text-primary mb-4">Prenez rendez-vous avec votre sophrologue à Charenton</h1>
 	<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
 		Choisissez votre créneau pour une séance à Charenton-le-Pont ou en visioconférence selon les disponibilités.
 	</p>
