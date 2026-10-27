@@ -14,8 +14,11 @@ export const site = {
 	phoneDisplay: '07 86 00 24 85',
 	phoneInternational: '+33786002485',
 	phoneHref: 'tel:+33786002485',
-	email: 'Fiona@labullecalme.fr',
-	emailHref: 'mailto:Fiona@labullecalme.fr',
+	// Ancienne boîte Hostinger (désactivée) :
+	// email: 'Fiona@labullecalme.fr',
+	// emailHref: 'mailto:Fiona@labullecalme.fr',
+	email: 'AvidanB1704@gmail.com',
+	emailHref: 'mailto:AvidanB1704@gmail.com',
 	postalCode: '94220',
 	city: 'Charenton-le-Pont',
 	mapsUrl:

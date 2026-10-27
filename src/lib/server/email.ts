@@ -1,7 +1,9 @@
 import { Resend } from 'resend';
 import { env } from '$env/dynamic/private';
 
-const PRACTITIONER_EMAIL = 'Fiona@labullecalme.fr';
+// Ancienne boîte Hostinger (désactivée) :
+// const PRACTITIONER_EMAIL = 'Fiona@labullecalme.fr';
+const PRACTITIONER_EMAIL = 'AvidanB1704@gmail.com';
 
 function formatDate(date: string): string {
 	return new Date(date).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });

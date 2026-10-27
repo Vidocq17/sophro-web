@@ -56,7 +56,7 @@ describe('notifyPractitionerOfBookingRequest', () => {
 		});
 		expect(sent).toBe(true);
 		expect(sendMock).toHaveBeenCalledWith(
-			expect.objectContaining({ to: 'Fiona@labullecalme.fr', subject: expect.stringContaining('demande') })
+			expect.objectContaining({ to: 'AvidanB1704@gmail.com', subject: expect.stringContaining('demande') })
 		);
 	});
 });
