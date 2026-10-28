@@ -18,6 +18,7 @@
 		"@sveltejs/kit": "^2.63.0",
 		"@sveltejs/vite-plugin-svelte": "^7.1.2",
 		"@tailwindcss/vite": "^4.3.0",
+		"@types/nodemailer": "^8.0.2",
 		"svelte": "^5.56.1",
 		"svelte-check": "^4.6.0",
 		"tailwindcss": "^4.3.0",
@@ -29,6 +30,6 @@
 		"@supabase/ssr": "^0.7.0",
 		"@supabase/supabase-js": "^2.108.0",
 		"@vercel/analytics": "^2.0.1",
-		"resend": "^6.20.0"
+		"nodemailer": "^10.2.1"
 	}
 }

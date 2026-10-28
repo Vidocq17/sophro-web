@@ -1,9 +1,13 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import { env } from '$env/dynamic/private';
 
 // Ancienne boîte Hostinger (désactivée) :
 // const PRACTITIONER_EMAIL = 'Fiona@labullecalme.fr';
 const PRACTITIONER_EMAIL = 'AvidanB1704@gmail.com';
+
+function esc(value: string): string {
+	return value.replace(/[&<>"']/g, (c) => `&#${c.charCodeAt(0)};`);
+}
 
 function formatDate(date: string): string {
 	return new Date(date).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
@@ -23,33 +27,31 @@ function buildBookingIcs(booking: { firstName: string; lastName: string; date: s
 		'VERSION:2.0',
 		'PRODID:-//La Bulle Calme//Booking//FR',
 		'BEGIN:VEVENT',
-		`UID:${crypto.randomUUID()}@labullecalme.fr`,
+		`UID:${crypto.randomUUID()}@labullecalme`,
 		`DTSTAMP:${toIcsDate(new Date().toISOString().slice(0, 10), new Date().toISOString().slice(11, 19))}Z`,
 		`DTSTART:${toIcsDate(booking.date, booking.startTime)}`,
 		`DTEND:${toIcsDate(booking.date, endTime)}`,
-		`SUMMARY:RDV ${booking.firstName} ${booking.lastName}`,
+		`SUMMARY:RDV ${`${booking.firstName} ${booking.lastName}`.replace(/[\r\n]+/g, ' ')}`,
 		'END:VEVENT',
 		'END:VCALENDAR'
 	].join('\r\n');
 }
 
 async function send(payload: {
-	from: string;
 	to: string;
 	subject: string;
 	html: string;
-	attachments?: { filename: string; content: string }[];
+	attachments?: { filename: string; content: string; contentType?: string }[];
 }): Promise<boolean> {
-	const resend = new Resend(env.RESEND_API_KEY);
 	try {
-		const { error } = await resend.emails.send(payload);
-		if (error) {
-			console.error('Échec de l’envoi de l’email', error);
-			return false;
-		}
+		const transporter = nodemailer.createTransport({
+			service: 'gmail',
+			auth: { user: env.GMAIL_USER, pass: env.GMAIL_APP_PASSWORD }
+		});
+		await transporter.sendMail({ from: `La Bulle Calme <${env.GMAIL_USER}>`, ...payload });
 		return true;
 	} catch (error) {
-		console.error('Service email indisponible', error);
+		console.error('Échec de l’envoi de l’email', error);
 		return false;
 	}
 }
@@ -61,10 +63,9 @@ export async function sendBookingRequestReceived(booking: {
 	startTime: string;
 }): Promise<boolean> {
 	return send({
-		from: "La Bulle Calme <contact@labullecalme.fr>",
 		to: booking.email,
 		subject: 'Votre demande de rendez-vous a bien été enregistrée',
-		html: `<p>Bonjour ${booking.firstName},</p><p>Votre demande de rendez-vous pour le ${formatDate(booking.date)} à ${booking.startTime.slice(0, 5)} a bien été enregistrée. Fiona vous confirmera ce créneau très prochainement.</p>`
+		html: `<p>Bonjour ${esc(booking.firstName)},</p><p>Votre demande de rendez-vous pour le ${formatDate(booking.date)} à ${booking.startTime.slice(0, 5)} a bien été enregistrée. Fiona vous confirmera ce créneau très prochainement.</p>`
 	});
 }
 
@@ -78,14 +79,14 @@ export async function notifyPractitionerOfBookingRequest(booking: {
 	startTime: string;
 }): Promise<boolean> {
 	return send({
-		from: "La Bulle Calme <contact@labullecalme.fr>",
 		to: PRACTITIONER_EMAIL,
 		subject: 'Nouvelle demande de rendez-vous',
-		html: `<p>${booking.firstName} ${booking.lastName} demande un rendez-vous le ${formatDate(booking.date)} à ${booking.startTime.slice(0, 5)}.</p><p>Email : ${booking.email}<br>Téléphone : ${booking.phone}</p>${booking.message ? `<p>Message : ${booking.message}</p>` : ''}<p>À valider dans l'espace admin ici : <a href="https://labullecalme.fr/admin">Espace Admin</a>.</p>`,
+		html: `<p>${esc(booking.firstName)} ${esc(booking.lastName)} demande un rendez-vous le ${formatDate(booking.date)} à ${booking.startTime.slice(0, 5)}.</p><p>Email : ${esc(booking.email)}<br>Téléphone : ${esc(booking.phone)}</p>${booking.message ? `<p>Message : ${esc(booking.message)}</p>` : ''}<p>À valider dans l'espace admin ici : <a href="https://labullecalme.fr/admin">Espace Admin</a>.</p>`,
 		attachments: [
 			{
 				filename: 'rendez-vous.ics',
-				content: btoa(buildBookingIcs(booking))
+				content: buildBookingIcs(booking),
+				contentType: 'text/calendar'
 			}
 		]
 	});
@@ -98,9 +99,8 @@ export async function sendBookingConfirmation(booking: {
 	startTime: string;
 }): Promise<boolean> {
 	return send({
-		from: "La Bulle Calme <contact@labullecalme.fr>",
 		to: booking.email,
 		subject: 'Confirmation de votre rendez-vous',
-		html: `<p>Bonjour ${booking.firstName},</p><p>Votre rendez-vous est confirmé le ${formatDate(booking.date)} à ${booking.startTime.slice(0, 5)}.</p><p>À très bientôt.</p>`
+		html: `<p>Bonjour ${esc(booking.firstName)},</p><p>Votre rendez-vous est confirmé le ${formatDate(booking.date)} à ${booking.startTime.slice(0, 5)}.</p><p>À très bientôt.</p>`
 	});
 }

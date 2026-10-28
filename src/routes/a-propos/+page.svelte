@@ -63,10 +63,10 @@
 	<div class="max-w-container-max mx-auto px-margin-mobile md:px-gutter grid grid-cols-1 md:grid-cols-12 gap-gutter items-center">
 		<div class="md:col-span-5">
 			<img
-				src="/fiona-benguigui-sophrologue-charenton.webp"
+				src="/fiona-benguigui-sophrologue-charenton.jpg"
 				alt="Fiona Benguigui, sophrologue à Charenton-le-Pont"
-				width="1200"
-				height="1600"
+				width="869"
+				height="1390"
 				fetchpriority="high"
 				loading="eager"
 				decoding="async"

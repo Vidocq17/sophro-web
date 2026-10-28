@@ -1,9 +1,9 @@
 export const SITE_URL = 'https://labullecalme.fr';
 
 export const SOCIAL_IMAGE = {
-	url: `${SITE_URL}/fiona-benguigui-sophrologue-charenton.webp`,
-	width: 1200,
-	height: 1600,
+	url: `${SITE_URL}/fiona-benguigui-sophrologue-charenton.jpg`,
+	width: 869,
+	height: 1390,
 	alt: 'Fiona Benguigui, sophrologue à Charenton-le-Pont'
 } as const;
 

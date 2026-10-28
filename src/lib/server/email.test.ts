@@ -1,10 +1,11 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 const sendMock = vi.fn();
-vi.mock('resend', () => ({
-	Resend: vi.fn().mockImplementation(function (this: { emails: { send: typeof sendMock } }) {
-		this.emails = { send: sendMock };
-	})
+vi.mock('nodemailer', () => ({
+	default: { createTransport: () => ({ sendMail: sendMock }) }
+}));
+vi.mock('$env/dynamic/private', () => ({
+	env: { GMAIL_USER: 'AvidanB1704@gmail.com', GMAIL_APP_PASSWORD: 'x' }
 }));
 
 import {
@@ -15,7 +16,7 @@ import {
 
 beforeEach(() => {
 	sendMock.mockReset();
-	sendMock.mockResolvedValue({ data: { id: 'email-1' }, error: null });
+	sendMock.mockResolvedValue({ messageId: 'email-1' });
 	vi.spyOn(console, 'error').mockImplementation(() => undefined);
 });
 
@@ -36,7 +37,7 @@ describe('sendBookingRequestReceived', () => {
 	});
 
 	it('does not throw when the email provider fails', async () => {
-		sendMock.mockResolvedValue({ data: null, error: { message: 'boom' } });
+		sendMock.mockRejectedValue(new Error('boom'));
 		await expect(
 			sendBookingRequestReceived({ email: 'sophie@example.com', firstName: 'Sophie', date: '2026-09-04', startTime: '09:00' })
 		).resolves.toBe(false);
@@ -58,6 +59,24 @@ describe('notifyPractitionerOfBookingRequest', () => {
 		expect(sendMock).toHaveBeenCalledWith(
 			expect.objectContaining({ to: 'AvidanB1704@gmail.com', subject: expect.stringContaining('demande') })
 		);
+	});
+});
+
+describe('html escaping', () => {
+	it('escapes user-supplied fields in the practitioner email', async () => {
+		await notifyPractitionerOfBookingRequest({
+			firstName: '<script>x</script>',
+			lastName: 'Martin',
+			email: 'sophie@example.com',
+			phone: '0612345678',
+			message: '<b>hi</b>',
+			date: '2026-09-04',
+			startTime: '09:00'
+		});
+		const { html } = sendMock.mock.calls[0][0];
+		expect(html).not.toContain('<script>');
+		expect(html).not.toContain('<b>hi</b>');
+		expect(html).toContain('&#60;script&#62;');
 	});
 });
 
